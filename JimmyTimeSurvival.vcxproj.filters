@@ -51,6 +51,15 @@
     <ClCompile Include="Obstacle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Spikes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -78,6 +87,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spikes.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

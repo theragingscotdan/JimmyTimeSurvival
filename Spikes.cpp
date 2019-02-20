@@ -1,0 +1,8 @@
+#include "Spikes.h"
+#include "Framework/AssetManager.h"
+
+Spikes::Spikes()
+	: Obstacle()
+{
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlaceHold.png"));
+}
