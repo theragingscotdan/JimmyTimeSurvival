@@ -1,5 +1,6 @@
 // project includes
 #include "Level.h"
+#include "Player.h"
 
 // library includes
 #include <iostream>
@@ -7,6 +8,7 @@
 
 Level::Level()
 	: m_currentLevel(0)
+	, m_player(nullptr)
 {
 	LoadLevel(1);
 }
@@ -18,7 +20,7 @@ void Level::Draw(sf::RenderTarget& _target)
 	sf::View camera = _target.getDefaultView();
 
 	// making the camera follow the player
-	//camera.setCenter(m_player->GetPosition());
+	camera.setCenter(m_player->GetPosition());
 
 	// draw game world to the window
 	_target.setView(camera);

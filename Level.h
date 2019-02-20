@@ -1,7 +1,7 @@
 #pragma once
 
 // library includes
-#include <SFML/Graphics.hpp>
+#include "Framework/GameObject.h"
 
 // project includes
 
@@ -23,7 +23,7 @@ public:
 private:
 
 	int m_currentLevel;
-
+	GameObject* m_player;
 
 
 };
