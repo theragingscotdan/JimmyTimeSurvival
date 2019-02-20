@@ -53,7 +53,49 @@ void Level::LoadLevel(int _levelToLoad)
 		std::cerr << "Unable to open file" + fileName;
 		exit(1); // call system to stop program with error
 	}
+
+	// set the starting x and y coordinates used to position level objects
+	float x = 0.0f;
+	float y = 0.0f;
+
+	// Define the spacng we will use for our grid
+	const float X_SPACE = 100.0f;
+	const float Y_SPACE = 100.0f;
+
+	// create the player first as other objects will need to reference it
+	Player* player = new Player();
+	m_player = player;
+
+	// read each character one by one from the file
+	char ch;
+	// each time, try to read the next character
+	// if sucessful, execute body of loop
+	// the "noskipws" means our input from file will include
+	// the white space (space and new lines)
+
+	while (inFile >> std::noskipws >> ch)
+	{
+		// perform actions based on what character was read in
+
+		if (ch == ' ')
+		{
+			x += X_SPACE;
+		}
+		else if (ch == '\n')
+		{
+			y += Y_SPACE;
+			x = 0;
+		}
+		else if (ch == 'P')
+		{
+			player->SetPosition(x, y);
+			player->setLevel(this);
+		}
+	}
+	// close the file now that we are done with it
+	inFile.close();
 }
+
 
 void Level::ReloadLevel()
 {

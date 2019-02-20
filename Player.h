@@ -12,6 +12,8 @@ public:
 	void Update(sf::Time _frameTime);
 	virtual void Collide(GameObject& _collider);
 
+	void setLevel(Level* _newLevel);
+
 protected:
 
 private:

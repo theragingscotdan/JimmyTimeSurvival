@@ -51,3 +51,8 @@ void Player::Collide(GameObject& _collider)
 {
 
 }
+
+void Player::setLevel(Level* _newLevel)
+{
+	m_level = _newLevel;
+}
