@@ -27,5 +27,6 @@ private:
 	std::vector<GameObject*> m_updateList;
 	std::vector<GameObject*> m_drawListWorld;
 
+	std::vector<std::pair<GameObject*, GameObject*>> m_collisionList;
 
 };

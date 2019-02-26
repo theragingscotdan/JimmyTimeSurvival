@@ -1,6 +1,7 @@
 // project includes
 #include "Level.h"
 #include "Player.h"
+#include "Wall.h"
 
 // library includes
 #include <iostream>
@@ -11,6 +12,7 @@ Level::Level()
 	, m_player(nullptr)
 	, m_updateList()
 	, m_drawListWorld()
+	, m_collisionList()
 {
 	LoadLevel(1);
 }
@@ -22,7 +24,7 @@ void Level::Draw(sf::RenderTarget& _target)
 	sf::View camera = _target.getDefaultView();
 
 	// making the camera follow the player
-	//camera.setCenter(m_player->GetPosition());
+	camera.setCenter(m_player->GetPosition());
 
 	// draw game world to the window
 	_target.setView(camera);
@@ -46,7 +48,7 @@ void Level::Update(sf::Time _frameTime)
 	}
 
 	// collision detection
-	/*for (int i = 0; i < m_collisionList.size(); ++i)
+	for (int i = 0; i < m_collisionList.size(); ++i)
 	{
 		GameObject* handler = m_collisionList[i].first;
 		GameObject* collider = m_collisionList[i].second;
@@ -58,7 +60,7 @@ void Level::Update(sf::Time _frameTime)
 				handler->Collide(*collider);
 			}
 		}
-	} */
+	} 
 }
 
 void Level::LoadLevel(int _levelToLoad)
@@ -132,6 +134,14 @@ void Level::LoadLevel(int _levelToLoad)
 			player->setLevel(this);
 			m_updateList.push_back(player);
 			m_drawListWorld.push_back(player);
+		}
+		else if (ch == 'W')
+		{
+			Wall* walls = new Wall();
+			walls->SetPosition(x, y);
+			m_updateList.push_back(walls);
+			m_drawListWorld.push_back(walls);
+			
 		}
 		else if (ch == '-')
 		{
