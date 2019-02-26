@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Wall.h"
+#include "Spikes.h"
+#include "Fire.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 300.0f
@@ -52,7 +54,9 @@ void Player::Collide(GameObject& _collider)
 {
 	// only do something if the object is a wall
 	Wall* wallCollider = dynamic_cast<Wall*>(&_collider);
-	
+	Spikes* spikeCollider = dynamic_cast<Spikes*>(&_collider);
+	Fire* fireCollider = dynamic_cast<Fire*>(&_collider);
+
 
 	// if it was a wall we hit, we need to move ourselves
 	//outside the wall's bounds, aka back where we were
@@ -65,6 +69,14 @@ void Player::Collide(GameObject& _collider)
 		// return to your previous position that we just
 		// moved away from this frame
 		m_sprite.setPosition(m_previousPosition);
+	}
+	else if (spikeCollider != nullptr)
+	{
+
+	}
+	else if (fireCollider != nullptr)
+	{
+
 	}
 }
 
