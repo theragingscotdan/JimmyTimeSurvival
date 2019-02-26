@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Wall.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 300.0f
@@ -49,7 +50,22 @@ void Player::Update(sf::Time _frameTime)
 
 void Player::Collide(GameObject& _collider)
 {
+	// only do something if the object is a wall
+	Wall* wallCollider = dynamic_cast<Wall*>(&_collider);
+	
 
+	// if it was a wall we hit, we need to move ourselves
+	//outside the wall's bounds, aka back where we were
+	if (wallCollider != nullptr)
+	{
+		// we did hit a wall!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		// Party time!
+
+		// return to your previous position that we just
+		// moved away from this frame
+		m_sprite.setPosition(m_previousPosition);
+	}
 }
 
 void Player::setLevel(Level* _newLevel)

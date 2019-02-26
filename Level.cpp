@@ -77,7 +77,7 @@ void Level::LoadLevel(int _levelToLoad)
 	m_updateList.clear();
 	m_drawListWorld.clear();
 	//m_drawListUI.clear();
-	//m_collisionList.clear();
+	m_collisionList.clear();
 
 	// set the current level
 	m_currentLevel = _levelToLoad;
@@ -101,8 +101,8 @@ void Level::LoadLevel(int _levelToLoad)
 	float y = 0.0f;
 
 	// Define the spacng we will use for our grid
-	const float X_SPACE = 100.0f;
-	const float Y_SPACE = 100.0f;
+	const float X_SPACE = 64.0f;
+	const float Y_SPACE = 64.0f;
 
 	// create the player first as other objects will need to reference it
 	Player* player = new Player();
@@ -141,6 +141,7 @@ void Level::LoadLevel(int _levelToLoad)
 			walls->SetPosition(x, y);
 			m_updateList.push_back(walls);
 			m_drawListWorld.push_back(walls);
+			m_collisionList.push_back(std::make_pair(player, walls));
 			
 		}
 		else if (ch == '-')
