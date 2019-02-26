@@ -2,8 +2,8 @@
 
 MovingObject::MovingObject()
 	:SpriteObject()
-	, m_velocity(0.0f,0.0f)
-	, m_previousPosition(0.0f,0.0f)
+	, m_velocity (0.0f, 0.0f)
+	, m_previousPosition (0.0f, 0.0f)
 {
 
 }

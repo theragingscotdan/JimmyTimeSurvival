@@ -22,7 +22,7 @@ void Level::Draw(sf::RenderTarget& _target)
 	sf::View camera = _target.getDefaultView();
 
 	// making the camera follow the player
-	camera.setCenter(m_player->GetPosition());
+	//camera.setCenter(m_player->GetPosition());
 
 	// draw game world to the window
 	_target.setView(camera);
@@ -38,14 +38,44 @@ void Level::Draw(sf::RenderTarget& _target)
 
 void Level::Update(sf::Time _frameTime)
 {
+	// Update all game objects
+	for (int i = 0; i < m_updateList.size(); ++i)
+	{
+		if (m_updateList[i]->IsActive())
+			m_updateList[i]->Update(_frameTime);
+	}
 
+	// collision detection
+	/*for (int i = 0; i < m_collisionList.size(); ++i)
+	{
+		GameObject* handler = m_collisionList[i].first;
+		GameObject* collider = m_collisionList[i].second;
+
+		if (handler->IsActive() && collider->IsActive())
+		{
+			if (handler->GetBounds().intersects(collider->GetBounds()))
+			{
+				handler->Collide(*collider);
+			}
+		}
+	} */
 }
 
 void Level::LoadLevel(int _levelToLoad)
 {
 	// TODO: Clean up level/old level
 
+	// delete any data already in the level
+	for (int i = 0; i < m_updateList.size(); ++i)
+	{
+		delete m_updateList[i];
+	}
 
+	// clear out our lists
+	m_updateList.clear();
+	m_drawListWorld.clear();
+	//m_drawListUI.clear();
+	//m_collisionList.clear();
 
 	// set the current level
 	m_currentLevel = _levelToLoad;
@@ -102,6 +132,14 @@ void Level::LoadLevel(int _levelToLoad)
 			player->setLevel(this);
 			m_updateList.push_back(player);
 			m_drawListWorld.push_back(player);
+		}
+		else if (ch == '-')
+		{
+			// do no - empty space
+		}
+		else
+		{
+			std::cerr << "Unrecognised character in level file: " << ch;
 		}
 	}
 	// close the file now that we are done with it
