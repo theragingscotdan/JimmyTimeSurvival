@@ -24,6 +24,8 @@ private:
 
 	int m_currentLevel;
 	GameObject* m_player;
+	std::vector<GameObject*> m_updateList;
+	std::vector<GameObject*> m_drawListWorld;
 
 
 };

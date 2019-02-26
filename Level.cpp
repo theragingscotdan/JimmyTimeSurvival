@@ -9,6 +9,8 @@
 Level::Level()
 	: m_currentLevel(0)
 	, m_player(nullptr)
+	, m_updateList()
+	, m_drawListWorld()
 {
 	LoadLevel(1);
 }
@@ -24,6 +26,14 @@ void Level::Draw(sf::RenderTarget& _target)
 
 	// draw game world to the window
 	_target.setView(camera);
+
+	for (int i = 0; i < m_drawListWorld.size(); ++i)
+	{
+		if (m_drawListWorld[i]->IsActive())
+			m_drawListWorld[i]->Draw(_target);
+	}
+
+
 }
 
 void Level::Update(sf::Time _frameTime)
@@ -90,6 +100,8 @@ void Level::LoadLevel(int _levelToLoad)
 		{
 			player->SetPosition(x, y);
 			player->setLevel(this);
+			m_updateList.push_back(player);
+			m_drawListWorld.push_back(player);
 		}
 	}
 	// close the file now that we are done with it
