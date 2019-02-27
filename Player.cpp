@@ -10,6 +10,7 @@ Player::Player()
 	: MovingObject()
 	, m_level(nullptr)
 	, m_health(100)
+	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
 }
@@ -77,8 +78,10 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (fireCollider != nullptr)
 	{
-		m_health -= 10;
-	}
+		//m_stand->m_getStand;
+		//if (m_getStand == true)
+		m_health -= 5;
+	} 
 }
 
 void Player::setLevel(Level* _newLevel)

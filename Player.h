@@ -21,5 +21,8 @@ protected:
 private:
 	Level* m_level;
 	int m_health;
+	
+
+
 	int Health();
 };
