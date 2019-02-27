@@ -2,6 +2,8 @@
 #include "Level.h"
 #include "Player.h"
 #include "Wall.h"
+#include "Fire.h"
+#include "Spikes.h"
 
 // library includes
 #include <iostream>
@@ -14,7 +16,7 @@ Level::Level()
 	, m_drawListWorld()
 	, m_collisionList()
 {
-	LoadLevel(1);
+	LoadLevel(7);
 }
 
 
@@ -144,6 +146,24 @@ void Level::LoadLevel(int _levelToLoad)
 			m_collisionList.push_back(std::make_pair(player, walls));
 			
 		}
+		else if (ch == 'S')
+		{
+			Spikes* spike = new Spikes();
+			spike->SetPosition(x, y);
+			m_updateList.push_back(spike);
+			m_drawListWorld.push_back(spike);
+			m_collisionList.push_back(std::make_pair(player, spike));
+
+		}
+		else if (ch == 'F')
+		{
+			Fire* fires = new Fire();
+			fires->SetPosition(x, y);
+			m_updateList.push_back(fires);
+			m_drawListWorld.push_back(fires);
+			m_collisionList.push_back(std::make_pair(player, fires));
+
+		} 
 		else if (ch == '-')
 		{
 			// do no - empty space

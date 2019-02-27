@@ -6,3 +6,7 @@ Spikes::Spikes()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlaceHold.png"));
 }
+void Spikes::Collider(GameObject&_collider)
+{
+
+}
