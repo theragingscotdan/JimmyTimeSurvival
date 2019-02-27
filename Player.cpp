@@ -9,6 +9,7 @@
 Player::Player()
 	: MovingObject()
 	, m_level(nullptr)
+	, m_health(100)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
 }

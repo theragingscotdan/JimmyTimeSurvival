@@ -13,10 +13,12 @@ public:
 	virtual void Collide(GameObject& _collider);
 
 	void setLevel(Level* _newLevel);
+	int Health();
 
 protected:
 
 private:
 	Level* m_level;
+	int m_health;
 
 };
