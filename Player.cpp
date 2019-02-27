@@ -4,7 +4,7 @@
 #include "Fire.h"
 #include "Framework/AssetManager.h"
 
-#define SPEED 300.0f
+#define SPEED 250.0f
 
 Player::Player()
 	: MovingObject()
@@ -77,11 +77,16 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (fireCollider != nullptr)
 	{
-
+		m_health -= 10;
 	}
 }
 
 void Player::setLevel(Level* _newLevel)
 {
 	m_level = _newLevel;
+}
+
+int Player::GetHealth()
+{
+	return m_health;
 }

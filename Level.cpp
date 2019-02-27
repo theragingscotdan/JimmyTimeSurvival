@@ -4,6 +4,7 @@
 #include "Wall.h"
 #include "Fire.h"
 #include "Spikes.h"
+#include "Health.h"
 
 // library includes
 #include <iostream>
@@ -15,6 +16,7 @@ Level::Level()
 	, m_updateList()
 	, m_drawListWorld()
 	, m_collisionList()
+	, m_drawListUI()
 {
 	LoadLevel(7);
 }
@@ -37,7 +39,14 @@ void Level::Draw(sf::RenderTarget& _target)
 			m_drawListWorld[i]->Draw(_target);
 	}
 
-
+	// Draw UI to the window
+	_target.setView(_target.getDefaultView());
+	//Draw UI objects
+	for (int i = 0; i < m_drawListUI.size(); ++i)
+	{
+		if (m_drawListUI[i]->IsActive())
+			m_drawListUI[i]->Draw(_target);
+	}
 }
 
 void Level::Update(sf::Time _frameTime)
@@ -78,7 +87,7 @@ void Level::LoadLevel(int _levelToLoad)
 	// clear out our lists
 	m_updateList.clear();
 	m_drawListWorld.clear();
-	//m_drawListUI.clear();
+	m_drawListUI.clear();
 	m_collisionList.clear();
 
 	// set the current level
@@ -175,6 +184,12 @@ void Level::LoadLevel(int _levelToLoad)
 	}
 	// close the file now that we are done with it
 	inFile.close();
+
+	// score - position not dependant on level
+	Health* health = new Health();
+	health->SetPlayer(player);
+	m_updateList.push_back(health);
+	m_drawListUI.push_back(health);
 }
 
 
