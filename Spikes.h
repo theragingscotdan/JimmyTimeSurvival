@@ -4,8 +4,10 @@
 
 class Spikes : public Obstacle
 {
+public:
 	Spikes();
 
+private:
 	void Collider(GameObject&_collider);
 
 };
