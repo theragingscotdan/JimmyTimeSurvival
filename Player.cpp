@@ -10,6 +10,7 @@ Player::Player()
 	: MovingObject()
 	, m_level(nullptr)
 	, m_health(100)
+	, m_stand(false)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -78,11 +79,13 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (fireCollider != nullptr)
 	{
-		fireCollider ->GetCanDamage();
-		if (fireCollider->GetCanDamage() == true)
+		fireCollider->GetCanDamage(); // get the variable from Fire allowing the player to take damage
+		m_stand = true;
+		if (fireCollider->GetCanDamage() == true)// && m_stand == true) // if the player can be damaged
 		{
-			m_health -= 5;
-			fireCollider->SetCanDamage(false);
+			m_health -= 5; // take damage
+			fireCollider->SetCanDamage(false); // then reset the ability to take damage
+			//m_stand = false;
 		}
 		
 	} 

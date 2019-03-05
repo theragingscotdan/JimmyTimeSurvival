@@ -3,8 +3,7 @@
 
 Fire::Fire()
 	: Obstacle()
-	, m_secondsPerStand(0)
-	, m_stand(false)
+	, m_secondsPerStand(0.0f)
 	, m_player(nullptr)
 	, m_canDamage(false)
 {
@@ -15,23 +14,14 @@ void Fire::Update(sf::Time _frameTime)
 {
 	m_secondsPerStand += _frameTime.asSeconds();
 	// If we have movement waiting to be processed,
-	if (!m_canDamage && m_secondsPerStand > 2.0f)
+	if (!m_canDamage && m_secondsPerStand > 2.0f) // if the player cannot take damage and time is less than 2 seconds
 	{
-		m_canDamage = true;
-		m_secondsPerStand = 0;
+		m_canDamage = true; // allow the player to take damage
+		m_secondsPerStand = 0.0f;
 
 	}
 
 }
-
-bool Fire::GetStand()
-{
-	return m_stand;
-}
-void Fire::SetStand(bool _stand)
-{
-	m_stand = _stand;
-} 
 
 bool Fire::GetCanDamage()
 {

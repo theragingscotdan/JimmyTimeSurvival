@@ -22,7 +22,7 @@ protected:
 private:
 	Level* m_level;
 	int m_health;
-	
+	bool m_stand;
 
 
 	int Health();
