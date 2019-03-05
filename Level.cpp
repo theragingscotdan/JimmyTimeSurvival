@@ -18,7 +18,7 @@ Level::Level()
 	, m_collisionList()
 	, m_drawListUI()
 {
-	LoadLevel(7);
+	LoadLevel(2);
 }
 
 

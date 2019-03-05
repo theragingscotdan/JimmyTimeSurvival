@@ -14,6 +14,7 @@ public:
 
 	void setLevel(Level* _newLevel);
 	int GetHealth();
+	
 
 
 protected:

@@ -78,9 +78,13 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (fireCollider != nullptr)
 	{
-		//m_stand->m_getStand;
-		//if (m_getStand == true)
-		m_health -= 5;
+		fireCollider ->GetCanDamage();
+		if (fireCollider->GetCanDamage() == true)
+		{
+			m_health -= 5;
+			fireCollider->SetCanDamage(false);
+		}
+		
 	} 
 }
 
@@ -93,3 +97,4 @@ int Player::GetHealth()
 {
 	return m_health;
 }
+
