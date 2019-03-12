@@ -12,13 +12,16 @@ Fire::Fire()
 
 void Fire::Update(sf::Time _frameTime)
 {
-	m_secondsPerStand += _frameTime.asSeconds();
-	// If we have movement waiting to be processed,
-	if (!m_canDamage && m_secondsPerStand > 2.0f) // if the player cannot take damage and time is less than 2 seconds
+	if (!m_canDamage)
 	{
-		m_canDamage = true; // allow the player to take damage
-		m_secondsPerStand = 0.0f;
+		m_secondsPerStand += _frameTime.asSeconds();
+		// If we have movement waiting to be processed,
+		if (m_secondsPerStand > 2.0f) // if the player cannot take damage and time is less than 2 seconds
+		{
+			m_canDamage = true; // allow the player to take damage
+			m_secondsPerStand = 0.0f;
 
+		}
 	}
 
 }
