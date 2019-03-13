@@ -131,10 +131,12 @@
     <ClCompile Include="Framework\SpriteObject.cpp" />
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HealthKit.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
     <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Spikes.cpp" />
     <ClCompile Include="Wall.cpp" />
@@ -148,9 +150,11 @@
     <ClInclude Include="Framework\SpriteObject.h" />
     <ClInclude Include="Framework\TextObject.h" />
     <ClInclude Include="Health.h" />
+    <ClInclude Include="HealthKit.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Spikes.h" />
     <ClInclude Include="Wall.h" />

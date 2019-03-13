@@ -5,6 +5,7 @@
 #include "Fire.h"
 #include "Spikes.h"
 #include "Health.h"
+#include "HealthKit.h"
 
 // library includes
 #include <iostream>
@@ -173,6 +174,15 @@ void Level::LoadLevel(int _levelToLoad)
 			m_collisionList.push_back(std::make_pair(player, fires));
 
 		} 
+		else if (ch == 'H')
+		{
+			HealthKit* HP = new HealthKit();
+			HP->SetPosition(x, y);
+			m_updateList.push_back(HP);
+			m_drawListWorld.push_back(HP);
+			m_collisionList.push_back(std::make_pair(HP, player));
+
+		}
 		else if (ch == '-')
 		{
 			// do no - empty space
