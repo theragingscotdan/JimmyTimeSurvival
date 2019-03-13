@@ -25,8 +25,7 @@ void Pickup::Collide(GameObject& _collider)
 		// do something based on type of pickup
 		OnPickup(*castPlayer);
 
-		// disappear
-		m_active = false;
+		
 
 	}
 

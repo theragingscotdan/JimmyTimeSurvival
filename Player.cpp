@@ -95,6 +95,10 @@ void Player::Collide(GameObject& _collider)
 		Kill();
 	}
 }
+void Player::AddHealth(int _changeBy)
+{
+	m_health += _changeBy;
+}
 
 void Player::setLevel(Level* _newLevel)
 {
@@ -104,6 +108,11 @@ void Player::setLevel(Level* _newLevel)
 int Player::GetHealth()
 {
 	return m_health;
+}
+
+void Player::SetHealth(int _health)
+{
+	m_health = _health;
 }
 
 void Player::Kill()

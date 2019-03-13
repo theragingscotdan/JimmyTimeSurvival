@@ -10,5 +10,20 @@ HealthKit::HealthKit()
 
 void HealthKit::OnPickup(Player& _player)
 {
-
+	if (_player.GetHealth() == 100)
+	{
+		
+	}
+	else if	(_player.GetHealth() < 100 && _player.GetHealth() >= 50)
+	{
+		// disappear
+		m_active = false;
+		_player.SetHealth(100);
+	}
+	else if (_player.GetHealth() < 50 && _player.GetHealth() > 0)
+	{
+		// disappear
+		m_active = false;
+		_player.AddHealth(50);
+	} 
 }

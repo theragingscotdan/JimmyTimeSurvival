@@ -12,8 +12,10 @@ public:
 	void Update(sf::Time _frameTime);
 	virtual void Collide(GameObject& _collider);
 
+	void AddHealth(int _changeBy);
 	void setLevel(Level* _newLevel);
 	int GetHealth();
+	void SetHealth(int _health);
 	
 
 
