@@ -23,6 +23,7 @@ private:
 	Level* m_level;
 	int m_health;
 	bool m_stand;
+	void Kill();
 
 
 	int Health();

@@ -195,7 +195,7 @@ void Level::LoadLevel(int _levelToLoad)
 
 void Level::ReloadLevel()
 {
-
+	LoadLevel(m_currentLevel);
 }
 
 void Level::LoadNextLevel()

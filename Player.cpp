@@ -75,7 +75,8 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (spikeCollider != nullptr)
 	{
-
+		m_health -= 5;
+		m_sprite.setPosition(m_previousPosition);
 	}
 	else if (fireCollider != nullptr)
 	{
@@ -89,6 +90,10 @@ void Player::Collide(GameObject& _collider)
 		}
 		
 	} 
+	if (m_health <= 0)
+	{
+		Kill();
+	}
 }
 
 void Player::setLevel(Level* _newLevel)
@@ -99,5 +104,13 @@ void Player::setLevel(Level* _newLevel)
 int Player::GetHealth()
 {
 	return m_health;
+}
+
+void Player::Kill()
+{
+	// reload current level
+	if (m_level != nullptr)
+		m_level->ReloadLevel();
+	
 }
 
