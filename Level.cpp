@@ -6,6 +6,7 @@
 #include "Spikes.h"
 #include "Health.h"
 #include "HealthKit.h"
+#include "Exit.h"
 
 // library includes
 #include <iostream>
@@ -181,6 +182,15 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(HP);
 			m_drawListWorld.push_back(HP);
 			m_collisionList.push_back(std::make_pair(HP, player));
+
+		}
+		else if (ch == 'E')
+		{
+			Exit* exit = new Exit();
+			exit->SetPosition(x, y);
+			m_updateList.push_back(exit);
+			m_drawListWorld.push_back(exit);
+			m_collisionList.push_back(std::make_pair(player, exit));
 
 		}
 		else if (ch == '-')
