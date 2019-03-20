@@ -7,6 +7,7 @@
 #include "Health.h"
 #include "HealthKit.h"
 #include "Exit.h"
+#include "Toolbox.h"
 
 // library includes
 #include <iostream>
@@ -191,6 +192,15 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(exit);
 			m_drawListWorld.push_back(exit);
 			m_collisionList.push_back(std::make_pair(player, exit));
+
+		}
+		else if (ch == 'T')
+		{
+			Toolbox* tool = new Toolbox();
+			tool->SetPosition(x, y);
+			m_updateList.push_back(tool);
+			m_drawListWorld.push_back(tool);
+			m_collisionList.push_back(std::make_pair(tool, player));
 
 		}
 		else if (ch == '-')

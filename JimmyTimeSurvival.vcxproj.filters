@@ -75,6 +75,9 @@
     <ClCompile Include="Exit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Toolbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -126,6 +129,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Exit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Toolbox.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
