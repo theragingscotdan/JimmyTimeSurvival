@@ -72,6 +72,9 @@
     <ClCompile Include="HealthKit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -120,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="HealthKit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Exit.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
