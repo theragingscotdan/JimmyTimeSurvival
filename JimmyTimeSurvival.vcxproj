@@ -144,6 +144,7 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="Framework\Animation.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Shooter.h" />
     <ClInclude Include="Spikes.h" />
     <ClInclude Include="Toolbox.h" />
     <ClInclude Include="Wall.h" />

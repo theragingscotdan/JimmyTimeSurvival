@@ -11,7 +11,10 @@ Exit::Exit()
 
 void Exit::Update(sf::Time _frameTime)
 {
+	if (m_player != nullptr)
+	{
 
+	}
 }
 
 void Exit::Collide(GameObject& _collider)
@@ -28,5 +31,5 @@ void Exit::SetPlayer(Player* _player)
 
 void Exit::SetLevel(Level* _level)
 {
-
+	m_level = _level;
 }

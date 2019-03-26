@@ -134,5 +134,11 @@
     <ClInclude Include="Toolbox.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Shooter.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
