@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Spikes.cpp" />
     <ClCompile Include="Toolbox.cpp" />
     <ClCompile Include="Wall.cpp" />

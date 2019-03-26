@@ -8,6 +8,7 @@
 #include "HealthKit.h"
 #include "Exit.h"
 #include "Toolbox.h"
+#include "Shooter.h"
 
 // library includes
 #include <iostream>
@@ -201,6 +202,15 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(tool);
 			m_drawListWorld.push_back(tool);
 			m_collisionList.push_back(std::make_pair(tool, player));
+
+		}
+		else if (ch == 'G')
+		{
+			Shooter* gun = new Shooter();
+			gun->SetPosition(x, y);
+			m_updateList.push_back(gun);
+			m_drawListWorld.push_back(gun);
+			m_collisionList.push_back(std::make_pair(gun, player));
 
 		}
 		else if (ch == '-')
