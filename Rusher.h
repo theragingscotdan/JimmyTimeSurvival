@@ -10,8 +10,9 @@ public:
 	Rusher();
 	
 	void Update(sf::Time _frameTime);
+	void Collide(GameObject& _collider);
 
 private:
-	bool m_IsCharging;
+	bool m_Charge;
 
 };
