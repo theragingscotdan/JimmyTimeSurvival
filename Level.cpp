@@ -9,6 +9,7 @@
 #include "Exit.h"
 #include "Toolbox.h"
 #include "Shooter.h"
+#include "Rusher.h"
 
 // library includes
 #include <iostream>
@@ -211,6 +212,17 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(gun);
 			m_drawListWorld.push_back(gun);
 			m_collisionList.push_back(std::make_pair(gun, player));
+			//m_collisionList.push_back(std::make_pair(walls, gun));
+
+		}
+		else if (ch == 'R')
+		{
+			Rusher* rush = new Rusher();
+			rush->SetPosition(x, y);
+			m_updateList.push_back(rush);
+			m_drawListWorld.push_back(rush);
+			m_collisionList.push_back(std::make_pair(rush, player));
+			m_collisionList.push_back(std::make_pair(rush, rush));
 
 		}
 		else if (ch == '-')

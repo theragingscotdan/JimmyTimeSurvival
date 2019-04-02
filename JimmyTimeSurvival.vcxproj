@@ -140,6 +140,7 @@
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rusher.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="Spikes.cpp" />
     <ClCompile Include="Toolbox.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rusher.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="Spikes.h" />
     <ClInclude Include="Toolbox.h" />
