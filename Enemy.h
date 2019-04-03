@@ -12,8 +12,9 @@ public:
 
 	void Collide(GameObject& _collider);
 
-private:
+protected:
 	Player* m_player;
 
+private:
 	double LinearInterpolate(double x0,	double x1, double y0, double y1, double x);
 };

@@ -10,7 +10,7 @@ Rusher::Rusher()
 
 void Rusher::Update(sf::Time _frameTime)
 {
-	//m_player->
+	//m_player-> 
 }
 
 void Rusher::Collide(GameObject& _collider)

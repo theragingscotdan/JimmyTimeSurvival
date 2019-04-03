@@ -9,6 +9,7 @@ Health::Health()
 	m_Text.setFont(AssetManager::GetFont("fonts/mainFont.ttf"));
 	m_Text.setString("Health: 100");
 	m_Text.setPosition(500, 0);
+
 }
 
 void Health::Update(sf::Time _frameTime)
@@ -18,6 +19,12 @@ void Health::Update(sf::Time _frameTime)
 		int health = m_player->GetHealth();
 		m_Text.setString("Health: " + std::to_string(health));
 	}
+
+	/*if (m_player != nullptr)
+	{
+		int attack = m_player->GetAttack();
+		m_Text.setString("Attack: " + std::to_string(attack));
+	} */
 }
 
 void Health::SetPlayer(Player* _player)

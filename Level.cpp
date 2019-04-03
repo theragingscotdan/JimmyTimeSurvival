@@ -223,6 +223,7 @@ void Level::LoadLevel(int _levelToLoad)
 			m_drawListWorld.push_back(rush);
 			m_collisionList.push_back(std::make_pair(rush, player));
 			m_collisionList.push_back(std::make_pair(rush, rush));
+			//m_collisionList.push_back(std::make_pair(rush, walls));
 
 		}
 		else if (ch == '-')
@@ -242,6 +243,7 @@ void Level::LoadLevel(int _levelToLoad)
 	health->SetPlayer(player);
 	m_updateList.push_back(health);
 	m_drawListUI.push_back(health);
+
 }
 
 

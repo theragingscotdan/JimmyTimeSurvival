@@ -11,6 +11,7 @@ Player::Player()
 	, m_level(nullptr)
 	, m_health(100)
 	, m_stand(false)
+	, m_attack(false)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -43,11 +44,23 @@ void Player::Update(sf::Time _frameTime)
 		m_velocity.x = SPEED;
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		m_attack = true;
+	}
+	else
+	{
+ 		m_attack = false;
+	}
+
+
+
+	
 	// call the update function manually on the parent class
 	// This will actually move the character
 
 	MovingObject::Update(_frameTime);
-
+	
 	// process animations
 	//m_animationSystem.Update(_frameTime);
 
@@ -100,6 +113,11 @@ void Player::AddHealth(int _changeBy)
 	m_health += _changeBy;
 }
 
+void Player::LoseHealth(int _changeBy)
+{
+	m_health -= _changeBy;
+}
+
 void Player::setLevel(Level* _newLevel)
 {
 	m_level = _newLevel;
@@ -113,6 +131,22 @@ int Player::GetHealth()
 void Player::SetHealth(int _health)
 {
 	m_health = _health;
+}
+
+bool Player::GetAttack()
+{
+	return m_attack;
+}
+
+void Player::Attack(sf::Event _gameEvent)
+{
+	if (m_health >= 0)
+	{
+		if (m_attack == true)
+		{
+
+		}
+	} 
 }
 
 void Player::Kill()
