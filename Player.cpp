@@ -2,6 +2,8 @@
 #include "Wall.h"
 #include "Spikes.h"
 #include "Fire.h"
+#include "Rusher.h"
+#include "Shooter.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 250.0f
@@ -72,6 +74,8 @@ void Player::Collide(GameObject& _collider)
 	Wall* wallCollider = dynamic_cast<Wall*>(&_collider);
 	Spikes* spikeCollider = dynamic_cast<Spikes*>(&_collider);
 	Fire* fireCollider = dynamic_cast<Fire*>(&_collider);
+	Rusher* rusherCollider = dynamic_cast<Rusher*>(&_collider);
+	Shooter* shooterCollider = dynamic_cast<Shooter*>(&_collider);
 
 
 	// if it was a wall we hit, we need to move ourselves
@@ -103,6 +107,28 @@ void Player::Collide(GameObject& _collider)
 		}
 		
 	} 
+	else if (rusherCollider != nullptr)
+	{
+		if (rusherCollider->IsActive() == true)
+		{
+			if (m_attack == true)
+			{
+				rusherCollider->SetActive(false);
+			}
+		}
+		
+	}
+	else if (shooterCollider != nullptr)
+	{
+		if (shooterCollider->IsActive() == true)
+		{
+			if (m_attack == true)
+			{
+				shooterCollider->SetActive(false);
+			}
+		}
+	} 
+
 	if (m_health <= 0)
 	{
 		Kill();

@@ -212,6 +212,7 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(gun);
 			m_drawListWorld.push_back(gun);
 			m_collisionList.push_back(std::make_pair(gun, player));
+			m_collisionList.push_back(std::make_pair(player, gun));
 			//m_collisionList.push_back(std::make_pair(walls, gun));
 
 		}
@@ -222,6 +223,7 @@ void Level::LoadLevel(int _levelToLoad)
 			m_updateList.push_back(rush);
 			m_drawListWorld.push_back(rush);
 			m_collisionList.push_back(std::make_pair(rush, player));
+			m_collisionList.push_back(std::make_pair(player, rush));
 			m_collisionList.push_back(std::make_pair(rush, rush));
 			//m_collisionList.push_back(std::make_pair(rush, walls));
 
