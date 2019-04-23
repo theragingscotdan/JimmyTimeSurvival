@@ -31,6 +31,7 @@ private:
 	bool m_justAttacked;
 	bool m_tookDamage;
 	float m_timeSinceDamage;
+	bool m_canAttack;
 
 	void Kill();
 

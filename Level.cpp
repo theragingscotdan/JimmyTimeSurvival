@@ -10,6 +10,7 @@
 #include "Toolbox.h"
 #include "Shooter.h"
 #include "Rusher.h"
+#include "Alarmer.h"
 
 // library includes
 #include <iostream>
@@ -228,6 +229,16 @@ void Level::LoadLevel(int _levelToLoad)
 			//m_collisionList.push_back(std::make_pair(rush, walls));
 
 		}
+		else if (ch == 'A')
+		{
+			Alarmer* alarm = new Alarmer();
+			alarm->SetPosition(x, y);
+			m_updateList.push_back(alarm);
+			m_drawListWorld.push_back(alarm);
+			m_collisionList.push_back(std::make_pair(alarm, player));
+			m_collisionList.push_back(std::make_pair(player, alarm));
+			
+		}
 		else if (ch == '-')
 		{
 			// do no - empty space
@@ -256,5 +267,5 @@ void Level::ReloadLevel()
 
 void Level::LoadNextLevel()
 {
-
+	LoadLevel(m_currentLevel + 1);
 }

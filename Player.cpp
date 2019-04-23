@@ -17,6 +17,7 @@ Player::Player()
 	, m_justAttacked(false)
 	, m_tookDamage(false)
 	, m_timeSinceDamage(0)
+	, m_canAttack(true)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -64,13 +65,15 @@ void Player::Update(sf::Time _frameTime)
 	{
 		m_timeSinceDamage += _frameTime.asSeconds();
 
-		if (m_timeSinceDamage >= 3)
+		if (m_timeSinceDamage <= 3)
 		{
-
+			m_canAttack = false;
+			
 		}
 		else
 		{
-
+			m_canAttack = true;
+			m_timeSinceDamage = 0;
 		}
 	}
 	
