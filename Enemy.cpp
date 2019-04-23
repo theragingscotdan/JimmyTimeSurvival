@@ -4,6 +4,7 @@ Enemy::Enemy()
 	:MovingObject()
 	, m_player(nullptr)
 	, m_dead(false)
+	, m_playerseen(false)
 {
 
 }

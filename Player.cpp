@@ -14,6 +14,9 @@ Player::Player()
 	, m_health(100)
 	, m_stand(false)
 	, m_attack(false)
+	, m_justAttacked(false)
+	, m_tookDamage(false)
+	, m_timeSinceDamage(0)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -49,14 +52,27 @@ void Player::Update(sf::Time _frameTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		m_attack = true;
+		m_justAttacked = true;
 	}
 	else
 	{
  		m_attack = false;
 	}
 
+	
+	if (m_tookDamage == true)
+	{
+		m_timeSinceDamage += _frameTime.asSeconds();
 
+		if (m_timeSinceDamage >= 3)
+		{
 
+		}
+		else
+		{
+
+		}
+	}
 	
 	// call the update function manually on the parent class
 	// This will actually move the character
@@ -99,6 +115,8 @@ void Player::Collide(GameObject& _collider)
 	{
 		fireCollider->GetCanDamage(); // get the variable from Fire allowing the player to take damage
 		m_stand = true;
+		m_tookDamage = true;
+
 		if (fireCollider->GetCanDamage() == true)// && m_stand == true) // if the player can be damaged
 		{
 			m_health -= 5; // take damage
@@ -107,6 +125,10 @@ void Player::Collide(GameObject& _collider)
 		}
 		
 	} 
+
+	// TODO: Make these enemy collisions more efficient. 
+	// Possibly using a list within enemy and having an add to list somewhere in each enemy
+	// then include enemy.h and bring the list via pointer/reference
 	else if (rusherCollider != nullptr)
 	{
 		if (rusherCollider->IsActive() == true)
@@ -164,6 +186,20 @@ bool Player::GetAttack()
 	return m_attack;
 }
 
+void Player::SetTookDamage(bool _damaged)
+{
+	m_tookDamage = _damaged;
+}
+
+
+void Player::Kill()
+{
+	// reload current level
+	if (m_level != nullptr)
+		m_level->ReloadLevel();
+	
+}
+
 void Player::Attack(sf::Event _gameEvent)
 {
 	if (m_health >= 0)
@@ -175,11 +211,10 @@ void Player::Attack(sf::Event _gameEvent)
 	} 
 }
 
-void Player::Kill()
+void Player::AttemptAttack()
 {
-	// reload current level
-	if (m_level != nullptr)
-		m_level->ReloadLevel();
-	
-}
+	if (m_justAttacked)
+	{
 
+	}
+}

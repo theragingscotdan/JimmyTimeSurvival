@@ -19,7 +19,7 @@ public:
 	int GetHealth();
 	void SetHealth(int _health);
 	bool GetAttack();
-
+	void SetTookDamage(bool _damaged);
 
 protected:
 
@@ -28,10 +28,15 @@ private:
 	int m_health;
 	bool m_stand;
 	bool m_attack;
+	bool m_justAttacked;
+	bool m_tookDamage;
+	float m_timeSinceDamage;
 
 	void Kill();
 
 	void Attack(sf::Event _gameEvent);
+
+	void AttemptAttack();
 
 
 	int Health();
