@@ -27,7 +27,7 @@ void Exit::Collide(GameObject& _collider)
 	{
 		//if (m_level != nullptr)
 		{
-			if (m_level->GetLevel() == 1);
+			//if (m_level->GetLevel() == 1);
 			//{
 				castPlayer->AdvanceLevel();
 		

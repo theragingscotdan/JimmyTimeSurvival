@@ -235,3 +235,8 @@ void Player::SetToolkit(bool _hasTool)
 {
 	hasToolbox = _hasTool;
 }
+
+bool Player::GetToolkit()
+{
+	return hasToolbox;
+}

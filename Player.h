@@ -22,6 +22,7 @@ public:
 	void SetTookDamage(bool _damaged);
 	void AdvanceLevel();
 	void SetToolkit(bool _hasTool);
+	bool GetToolkit();
 
 protected:
 
