@@ -18,11 +18,14 @@ public:
 	void LoadLevel(int _levelToLoad);
 	void ReloadLevel();
 	void LoadNextLevel();
+	int GetLevel();
 
 
 private:
 
 	int m_currentLevel;
+	int m_pendingLevel;
+
 	GameObject* m_player;
 	std::vector<GameObject*> m_updateList;
 	std::vector<GameObject*> m_drawListWorld;

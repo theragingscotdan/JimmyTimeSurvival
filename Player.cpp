@@ -18,6 +18,7 @@ Player::Player()
 	, m_tookDamage(false)
 	, m_timeSinceDamage(0)
 	, m_canAttack(true)
+	, hasToolbox(false)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -111,8 +112,8 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (spikeCollider != nullptr)
 	{
-		m_health -= 5;
-		m_sprite.setPosition(m_previousPosition);
+		m_health = 0;  // reduce the player's hp to 0 which kills them
+	
 	}
 	else if (fireCollider != nullptr)
 	{
@@ -218,6 +219,19 @@ void Player::AttemptAttack()
 {
 	if (m_justAttacked)
 	{
-
+		m_canAttack = false;
 	}
+}
+
+void Player::AdvanceLevel()
+{
+	if (m_level != nullptr)
+	{
+		m_level->LoadNextLevel();
+	}
+} 
+
+void Player::SetToolkit(bool _hasTool)
+{
+	hasToolbox = _hasTool;
 }

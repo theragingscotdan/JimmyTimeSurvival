@@ -33,4 +33,8 @@ W - -  - - - -
 W - - - - S K - - - - - 
 W - - - G - - 
 W
-W
+W - - - - - - - - - - - - - - - - - - - - - - - - - - - - - W W W W W W W W W
+W - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - W
+W - - - - - - - - - - - - - - - - - - - - - - - - - - - - - W - - - - - - - W
+W - - - - - - - - - - - - S - - - - - - - - - - - - - - - - W - - - G - - - W
+W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W

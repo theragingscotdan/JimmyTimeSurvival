@@ -20,6 +20,8 @@ public:
 	void SetHealth(int _health);
 	bool GetAttack();
 	void SetTookDamage(bool _damaged);
+	void AdvanceLevel();
+	void SetToolkit(bool _hasTool);
 
 protected:
 
@@ -32,6 +34,7 @@ private:
 	bool m_tookDamage;
 	float m_timeSinceDamage;
 	bool m_canAttack;
+	bool hasToolbox;
 
 	void Kill();
 

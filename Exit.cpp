@@ -13,10 +13,7 @@ void Exit::Update(sf::Time _frameTime)
 {
 	if (m_player != nullptr)
 	{
-		if (m_level != nullptr)
-		{
-
-		}
+		
 	}
 }
 
@@ -28,7 +25,15 @@ void Exit::Collide(GameObject& _collider)
 
 	if (castPlayer != nullptr)
 	{
+		//if (m_level != nullptr)
+		{
+			if (m_level->GetLevel() == 1);
+			//{
+				castPlayer->AdvanceLevel();
+		
+		}
 
+		//}
 	}
 }
 

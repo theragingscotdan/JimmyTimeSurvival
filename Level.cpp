@@ -23,8 +23,9 @@ Level::Level()
 	, m_drawListWorld()
 	, m_collisionList()
 	, m_drawListUI()
+	, m_pendingLevel(0)
 {
-	LoadLevel(2);
+	LoadLevel(1);
 }
 
 
@@ -78,6 +79,14 @@ void Level::Update(sf::Time _frameTime)
 			}
 		}
 	} 
+	// IF there is a pending level waiting... 
+	if (m_pendingLevel != 0)
+	{
+		// load it
+		LoadLevel(m_pendingLevel);
+		// remove pending level
+		m_pendingLevel = 0;
+	}
 }
 
 void Level::LoadLevel(int _levelToLoad)
@@ -194,7 +203,7 @@ void Level::LoadLevel(int _levelToLoad)
 			exit->SetPosition(x, y);
 			m_updateList.push_back(exit);
 			m_drawListWorld.push_back(exit);
-			m_collisionList.push_back(std::make_pair(player, exit));
+			m_collisionList.push_back(std::make_pair(exit, player));
 
 		}
 		else if (ch == 'T')
@@ -262,10 +271,17 @@ void Level::LoadLevel(int _levelToLoad)
 
 void Level::ReloadLevel()
 {
-	LoadLevel(m_currentLevel);
+	m_pendingLevel = m_currentLevel;
+	LoadLevel(m_pendingLevel);
 }
 
 void Level::LoadNextLevel()
 {
-	LoadLevel(m_currentLevel + 1);
+	m_pendingLevel = m_currentLevel + 1;
+	LoadLevel(m_pendingLevel);
+}
+
+int Level::GetLevel()
+{
+	return m_currentLevel;
 }
