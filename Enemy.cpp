@@ -16,7 +16,7 @@ void Enemy::Update(sf::Time _frameTime)
 
 void Enemy::Collide(GameObject& _collider)
 {
-	
+	Player* castPlayer = dynamic_cast <Player*>(&_collider);
 }
 
 void Enemy::SetActive(bool _active)
