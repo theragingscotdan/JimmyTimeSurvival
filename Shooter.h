@@ -13,5 +13,6 @@ public:
 
 private:
 	//Player* m_player;
-	int m_secondsPerShoot;
+	float m_secondsPerShoot;
+	bool m_shoot;
 };

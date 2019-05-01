@@ -16,7 +16,7 @@ Player::Player()
 	, m_attack(false)
 	, m_justAttacked(false)
 	, m_tookDamage(false)
-	, m_timeSinceDamage(0)
+	, m_timeSinceDamage(0.0f)
 	, m_canAttack(true)
 	, hasToolbox(false)
 	
@@ -53,7 +53,7 @@ void Player::Update(sf::Time _frameTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		m_attack = true;
+		AttemptAttack();
 		m_justAttacked = true;
 	}
 	else
@@ -66,15 +66,20 @@ void Player::Update(sf::Time _frameTime)
 	{
 		m_timeSinceDamage += _frameTime.asSeconds();
 
-		if (m_timeSinceDamage <= 3)
+		if (m_timeSinceDamage <= 3.0f)
 		{
 			m_canAttack = false;
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown"));
 			
 		}
 		else
 		{
 			m_canAttack = true;
-			m_timeSinceDamage = 0;
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
+			m_tookDamage = false;
+			m_timeSinceDamage = 0.0f;
+			
+			
 		}
 	}
 	
@@ -217,10 +222,15 @@ void Player::Attack(sf::Event _gameEvent)
 
 void Player::AttemptAttack()
 {
-	if (m_justAttacked)
+	/*if (m_justAttacked)
 	{
 		m_canAttack = false;
 	}
+	*/
+	if (m_canAttack)
+	{
+		m_attack = true;
+	} 
 }
 
 void Player::AdvanceLevel()

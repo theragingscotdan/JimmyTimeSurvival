@@ -34,7 +34,7 @@ void Exit::Collide(GameObject& _collider)
 		}
 
 		//}
-	}
+	} 
 }
 
 void Exit::SetPlayer(Player* _player)

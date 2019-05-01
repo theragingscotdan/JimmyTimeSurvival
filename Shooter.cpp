@@ -5,7 +5,8 @@
 
 Shooter::Shooter()
 	: Enemy()
-	, m_secondsPerShoot(0)
+	, m_secondsPerShoot(0.0f)
+	, m_shoot(false)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
 }
@@ -18,6 +19,23 @@ Shooter::Shooter()
 void Shooter::Update(sf::Time _frameTime)
 {
 	m_secondsPerShoot += _frameTime.asSeconds();
+	if (m_secondsPerShoot > 4.0f)
+	{
+		m_shoot = true;
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold"));
+		m_secondsPerShoot = 0.0f;
+	}
+	else
+	{
+		m_shoot = false;
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
+	} 
+
+	if (m_shoot)
+	{
+		// add the bullet movement code here. 
+		// look up c# from year 1
+	}
 }
 
 void Shooter::Collide(GameObject& _collider)

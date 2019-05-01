@@ -135,6 +135,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="Exit1.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AnimationSystem.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Framework\TextObject.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HealthKit.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
@@ -161,6 +163,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Exit.h" />
+    <ClInclude Include="ExitLvl1.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AnimationSystem.h" />
@@ -170,6 +173,7 @@
     <ClInclude Include="Framework\TextObject.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="HealthKit.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="Obstacle.h" />
