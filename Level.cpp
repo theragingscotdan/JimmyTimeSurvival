@@ -11,6 +11,7 @@
 #include "Shooter.h"
 #include "Rusher.h"
 #include "Alarmer.h"
+#include "Key.h"
 
 // library includes
 #include <iostream>
@@ -247,6 +248,15 @@ void Level::LoadLevel(int _levelToLoad)
 			m_collisionList.push_back(std::make_pair(alarm, player));
 			m_collisionList.push_back(std::make_pair(player, alarm));
 			
+		}
+		else if (ch == 'K')
+		{
+		Key* keycard = new Key();
+		keycard->SetPosition(x, y);
+		m_updateList.push_back(keycard);
+		m_drawListWorld.push_back(keycard);
+		m_collisionList.push_back(std::make_pair(keycard, player));
+
 		}
 		else if (ch == '-')
 		{
