@@ -22,8 +22,11 @@ protected:
 	Player* m_player;
 	bool m_dead;
 	bool m_playerseen;
+	float m_secondsPassed;
+	float m_duration;
 
 private:
 	double LinearInterpolate(double x0,	double x1, double y0, double y1, double x);
+	sf::Vector2f QuadEaseOut(float time, float duration, sf::Vector2f startingPoint, sf::Vector2f endPoint);
 
 };
