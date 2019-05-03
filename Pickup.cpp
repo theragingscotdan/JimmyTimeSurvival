@@ -28,7 +28,7 @@ void Pickup::Collide(GameObject& _collider)
 		
 
 	}
-
+	//m_active = false;
 
 }
 

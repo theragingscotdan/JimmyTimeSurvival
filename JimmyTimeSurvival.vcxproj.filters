@@ -93,10 +93,10 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Exit1.cpp">
+    <ClCompile Include="Key.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Key.cpp">
+    <ClCompile Include="ExitLvl2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,10 +170,10 @@
     <ClInclude Include="Bullet.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExitLvl1.h">
+    <ClInclude Include="Key.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Key.h">
+    <ClInclude Include="ExitLvl2.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

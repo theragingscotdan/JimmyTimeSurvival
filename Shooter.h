@@ -2,6 +2,7 @@
 
 #include "Enemy.h"
 #include "Player.h"
+#include "Bullet.h"
 
 
 class Shooter : public Enemy 
@@ -15,4 +16,6 @@ private:
 	//Player* m_player;
 	float m_secondsPerShoot;
 	bool m_shoot;
+	//bool GetShoot();
+	Bullet* m_bullet;
 };

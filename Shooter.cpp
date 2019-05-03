@@ -7,6 +7,7 @@ Shooter::Shooter()
 	: Enemy()
 	, m_secondsPerShoot(0.0f)
 	, m_shoot(false)
+	, m_bullet(nullptr)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
 }
@@ -35,6 +36,8 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		// add the bullet movement code here. 
 		// look up c# from year 1
+		//m_bullet->IsActive = true;
+		//m_velocity
 	}
 }
 
@@ -42,3 +45,8 @@ void Shooter::Collide(GameObject& _collider)
 {
 
 }
+
+/*bool Shooter::GetShoot()
+{
+	return m_shoot;
+} */

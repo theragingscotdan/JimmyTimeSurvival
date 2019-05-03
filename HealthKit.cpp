@@ -10,6 +10,7 @@ HealthKit::HealthKit()
 
 void HealthKit::OnPickup(Player& _player)
 {
+	m_active = true;
 	if (_player.GetHealth() == 100)
 	{
 		

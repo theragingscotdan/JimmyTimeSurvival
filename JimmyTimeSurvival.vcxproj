@@ -135,7 +135,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Exit.cpp" />
-    <ClCompile Include="Exit1.cpp" />
+    <ClCompile Include="ExitLvl2.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\AnimationSystem.cpp" />
@@ -163,7 +163,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Exit.h" />
-    <ClInclude Include="ExitLvl1.h" />
+    <ClInclude Include="ExitLvl2.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\AnimationSystem.h" />

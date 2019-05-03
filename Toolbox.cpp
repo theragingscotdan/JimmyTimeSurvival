@@ -11,4 +11,6 @@ void Toolbox::OnPickup(Player& _player)
 {
 	// disappear
 	m_active = false;
+
+	_player.SetToolkit(true);
 }
