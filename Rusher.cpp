@@ -4,6 +4,7 @@
 Rusher::Rusher()
 	:Enemy()
 	, m_Charge(false)
+	, m_position(0.0f, 0.0f)
 {
 	
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/buffalo.png"));
@@ -13,7 +14,15 @@ Rusher::Rusher()
 void Rusher::Update(sf::Time _frameTime)
 {
 	//m_player-> 
+	//m_startPoint = m_currentPosition;
+	m_secondsPassed += _frameTime.asSeconds();
+
+	m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+
+	 // TODO: get postion via a setter from level
+	// add a position vector to move
 }
+
 
 void Rusher::Collide(GameObject& _collider)
 {
