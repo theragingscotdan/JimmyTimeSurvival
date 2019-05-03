@@ -12,6 +12,7 @@
 #include "Rusher.h"
 #include "Alarmer.h"
 #include "Key.h"
+#include "ExitLvl2.h"
 
 // library includes
 #include <iostream>
@@ -251,13 +252,23 @@ void Level::LoadLevel(int _levelToLoad)
 		}
 		else if (ch == 'K')
 		{
-		Key* keycard = new Key();
-		keycard->SetPosition(x, y);
-		m_updateList.push_back(keycard);
-		m_drawListWorld.push_back(keycard);
-		m_collisionList.push_back(std::make_pair(keycard, player));
+			Key* keycard = new Key();
+			keycard->SetPosition(x, y);
+			m_updateList.push_back(keycard);
+			m_drawListWorld.push_back(keycard);
+			m_collisionList.push_back(std::make_pair(keycard, player));
 
 		}
+		else if (ch == 'B')
+		{
+			ExitLvl2* blocked = new ExitLvl2();
+			blocked->SetPosition(x, y);
+			m_updateList.push_back(blocked);
+			m_drawListWorld.push_back(blocked);
+			m_collisionList.push_back(std::make_pair(blocked, player));
+
+		}
+
 		else if (ch == '-')
 		{
 			// do no - empty space

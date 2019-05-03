@@ -4,7 +4,7 @@
 ExitLvl2::ExitLvl2()
 	: Exit()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen"));
 }
 
 void ExitLvl2::Update(sf::Time _frameTime)
@@ -14,12 +14,21 @@ void ExitLvl2::Update(sf::Time _frameTime)
 		bool haveKey = m_player->GetToolkit();
 		if (haveKey == true)
 		{
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen.png"));
+			m_active = false;
 		}
 	}
 }
 
 void ExitLvl2::Collide(GameObject& _collider)
 {
+	Player* castPlayer = dynamic_cast <Player*>(&_collider);
 
+	if (castPlayer != nullptr)
+	{
+		
+		if (castPlayer->GetToolkit() == true)
+		{
+			m_active = false;
+		}
+	}
 }
