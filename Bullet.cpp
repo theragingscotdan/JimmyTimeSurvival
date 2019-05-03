@@ -6,6 +6,7 @@
 
 Bullet::Bullet()
 	: MovingObject()
+	, m_bullet(0.0f, 0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/bullet.png"));
 }

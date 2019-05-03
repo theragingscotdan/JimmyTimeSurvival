@@ -12,6 +12,7 @@ public:
 	virtual void Collide(GameObject& _collider);
 
 	 
-
+private:
+	sf::Vector2f m_bullet;
 	
 };
