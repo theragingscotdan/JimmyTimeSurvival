@@ -19,6 +19,7 @@ Player::Player()
 	, m_timeSinceDamage(0.0f)
 	, m_canAttack(true)
 	, hasToolbox(false)
+	, m_lives(3)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -163,6 +164,7 @@ void Player::Collide(GameObject& _collider)
 	if (m_health <= 0)
 	{
 		Kill();
+		m_lives--;
 	}
 }
 void Player::AddHealth(int _changeBy)

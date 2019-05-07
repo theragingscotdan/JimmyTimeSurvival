@@ -20,11 +20,6 @@ void Health::Update(sf::Time _frameTime)
 		m_Text.setString("Health: " + std::to_string(health));
 	}
 
-	/*if (m_player != nullptr)
-	{
-		int attack = m_player->GetAttack();
-		m_Text.setString("Attack: " + std::to_string(attack));
-	} */
 }
 
 void Health::SetPlayer(Player* _player)

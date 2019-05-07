@@ -36,6 +36,7 @@ private:
 	float m_timeSinceDamage;
 	bool m_canAttack;
 	bool hasToolbox;
+	int m_lives;
 
 	void Kill();
 

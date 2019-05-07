@@ -21,6 +21,7 @@ void Rusher::Update(sf::Time _frameTime)
 
 	 // TODO: get postion via a setter from level
 	// add a position vector to move
+	
 }
 
 

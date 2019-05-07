@@ -16,5 +16,7 @@ private:
 	sf::Vector2f m_bullet;
 	//sf::Vector
 	float m_firedTime;
+
+	void Despawn();
 	
 };

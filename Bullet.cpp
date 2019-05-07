@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Player.h"
+#include "Wall.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 300f;
@@ -29,5 +30,29 @@ void Bullet::Update(sf::Time _frameTime)
 
 void Bullet::Collide(GameObject& _collider)
 {
-	Player* castPlayer = dynamic_cast <Player*>(&_collider);
+	
+	if (m_active)
+	{
+		Player* castPlayer = dynamic_cast <Player*>(&_collider);
+
+		if (castPlayer != nullptr)
+		{
+			castPlayer->LoseHealth(45);
+			// then delete itself
+			Despawn();
+		}
+
+		Wall* castWall = dynamic_cast<Wall*>(&_collider);
+
+		if (castWall != nullptr)
+		{
+			// delete itself
+			Despawn();
+		}
+	}
+}
+
+void Bullet::Despawn()
+{
+	m_active = false;
 }
