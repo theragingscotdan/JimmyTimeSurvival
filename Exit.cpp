@@ -7,6 +7,7 @@ Exit::Exit()
 	, m_level(nullptr)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorClosed.png"));
+	
 }
 
 void Exit::Update(sf::Time _frameTime)

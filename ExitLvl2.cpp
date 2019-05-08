@@ -5,6 +5,7 @@ ExitLvl2::ExitLvl2()
 	: Exit()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen"));
+	
 }
 
 void ExitLvl2::Update(sf::Time _frameTime)
@@ -21,7 +22,7 @@ void ExitLvl2::Update(sf::Time _frameTime)
 
 void ExitLvl2::Collide(GameObject& _collider)
 {
-	Player* castPlayer = dynamic_cast <Player*>(&_collider);
+	/*Player* castPlayer = dynamic_cast <Player*>(&_collider);
 
 	if (castPlayer != nullptr)
 	{
@@ -30,5 +31,17 @@ void ExitLvl2::Collide(GameObject& _collider)
 		{
 			m_active = false;
 		}
-	}
+		else
+		{
+			
+		}
+	} */
 }
+
+void ExitLvl2::SetActive(bool _active)
+{
+	m_active = _active;
+}
+
+
+

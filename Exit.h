@@ -21,6 +21,7 @@ public:
 	void SetLevel(Level* _level);
 
 
+
 private:
 	Player* m_player;
 	Level* m_level;

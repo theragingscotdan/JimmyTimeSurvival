@@ -265,7 +265,8 @@ void Level::LoadLevel(int _levelToLoad)
 			blocked->SetPosition(x, y);
 			m_updateList.push_back(blocked);
 			m_drawListWorld.push_back(blocked);
-			m_collisionList.push_back(std::make_pair(blocked, player));
+			//m_collisionList.push_back(std::make_pair(blocked, player));
+			m_collisionList.push_back(std::make_pair(player, blocked));
 
 		}
 
