@@ -174,6 +174,8 @@ void Player::Collide(GameObject& _collider)
 				//bool newPosition = AttemptBack(sf::Vector2f(0.0f, 1.0f));
 				
 				m_sprite.move(0.0f, -50.0f);
+				// m_velocity (1.0f,)
+				// set velocity to -1 instead
 				m_health -= 35;
 			}
 		}

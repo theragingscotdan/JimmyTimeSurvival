@@ -21,7 +21,7 @@ void Bullet::Update(sf::Time _frameTime)
 	{
 		//m_bullet.
 		//m_bullet.
-		//currentPosition += m_velocity;
+		//m_currentPosition += m_velocity;
 		m_firedTime += _frameTime.asSeconds();
 		
 	}
@@ -50,6 +50,11 @@ void Bullet::Collide(GameObject& _collider)
 			Despawn();
 		}
 	}
+}
+
+void Bullet::SetActive(bool _active)
+{
+	m_active = _active;
 }
 
 void Bullet::Despawn()

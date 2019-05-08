@@ -10,6 +10,7 @@ public:
 
 	void Update(sf::Time _frameTime);
 	virtual void Collide(GameObject& _collider);
+	void SetActive(bool _active);
 
 	 
 private:

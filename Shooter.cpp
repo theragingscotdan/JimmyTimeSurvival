@@ -15,7 +15,11 @@ Shooter::Shooter()
 // shooters can possibly get away with not being able to move
 // i can make them stationary and change it so they rotate 90 degrees every x seconds
 // this will change their facing direction and if they see the player within the vision
-// semi-circle, shoot towards the player
+// semi-circle, shoot towards the player - not happening
+
+
+//  what i will do instead, is every x seconds, the shooter will rotate by 90 degrees
+// then fire then rotate etc
 
 void Shooter::Update(sf::Time _frameTime)
 {
@@ -34,10 +38,13 @@ void Shooter::Update(sf::Time _frameTime)
 
 	if (m_shoot)
 	{
-		// add the bullet movement code here. 
-		// look up c# from year 1
-		//m_bullet->IsActive = true;
-		//m_velocity
+		if (m_bullet != nullptr)
+		{
+			// add the bullet movement code here. 
+			// look up c# from year 1
+			m_bullet->SetActive(true);
+			//m_velocity
+		}
 	}
 }
 
