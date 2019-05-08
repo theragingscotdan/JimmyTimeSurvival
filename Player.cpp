@@ -20,6 +20,7 @@ Player::Player()
 	, m_canAttack(true)
 	, hasToolbox(false)
 	, m_lives(3)
+	, m_oldPosition(0.0f, 0.0f)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -147,6 +148,13 @@ void Player::Collide(GameObject& _collider)
 			{
 				rusherCollider->SetActive(false);
 			}
+			else
+			{
+				m_sprite.move(-50.0f, 0.0f);
+				m_health -= 35;
+				
+				
+			}
 		}
 		
 	}
@@ -157,6 +165,13 @@ void Player::Collide(GameObject& _collider)
 			if (m_attack == true)
 			{
 				shooterCollider->SetActive(false);
+			}
+			else
+			{
+				//bool newPosition = AttemptBack(sf::Vector2f(0.0f, 1.0f));
+				
+				m_sprite.move(0.0f, -50.0f);
+				m_health -= 35;
 			}
 		}
 	} 
@@ -251,4 +266,13 @@ void Player::SetToolkit(bool _hasTool)
 bool Player::GetToolkit()
 {
 	return hasToolbox;
+}
+bool Player::AttemptBack(sf::Vector2f _direction)
+{
+	m_previousPosition = m_oldPosition;
+	sf::Vector2f targetPos = m_oldPosition - _direction;
+		//m_newPosition = m_oldPosition - new sf::Vector2f(10.0f, 0.0f);
+		//m_sprite.setPosition(m_previousPosition - new sf::Vector2f(10.0f, 0.0f));
+	m_sprite.setPosition(targetPos - _direction);
+	return true;
 }

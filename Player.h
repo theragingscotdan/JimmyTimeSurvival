@@ -37,6 +37,9 @@ private:
 	bool m_canAttack;
 	bool hasToolbox;
 	int m_lives;
+	sf::Vector2f m_oldPosition;
+
+	bool AttemptBack(sf::Vector2f _direction);
 
 	void Kill();
 
