@@ -26,6 +26,12 @@ void Enemy::SetActive(bool _active)
 	m_active = _active;
 }
 
+void Enemy::Vision(sf::Vector2f)
+{
+	//  https://www.gamedev.net/forums/topic/623320-efficient-line-of-sight-algorithm/
+
+}
+
 double Enemy::LinearInterpolate(double x0, double x1, double y0, double y1, double x)
 {
 	return y0 + (x - x0) * (y1 - y0) / (x1 - x0);

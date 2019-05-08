@@ -14,7 +14,7 @@ public:
 
 	void SetActive(bool _active);
 
-	void Vision(sf::Vector2f);
+	void Vision(sf::Vector2f); 
 
 	sf::Vector2f DistanceFromPlayer(sf::Vector2f);
 

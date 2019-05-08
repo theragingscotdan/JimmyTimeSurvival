@@ -58,6 +58,7 @@ void Player::Update(sf::Time _frameTime)
 	{
 		AttemptAttack();
 		m_justAttacked = true;
+		
 	}
 	else
 	{
@@ -260,10 +261,13 @@ void Player::AttemptAttack()
 		m_canAttack = false;
 	}
 	*/
+	//if (m_tookDamage && (sf::Keyboard::IsHeld(sf::Keyboard::Space))
 	if (m_canAttack)
 	{
 		m_attack = true;
-	} 
+	}
+	else
+		m_attack = false;
 }
 
 void Player::AdvanceLevel()
