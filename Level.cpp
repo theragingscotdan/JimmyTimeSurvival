@@ -290,6 +290,7 @@ void Level::LoadLevel(int _levelToLoad)
 	m_drawListUI.push_back(health);
 
 	
+	
 	Bullet* bullet = new Bullet();
 	m_drawListWorld.push_back(bullet);
 	m_updateList.push_back(bullet);
