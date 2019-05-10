@@ -171,13 +171,6 @@ void Player::Collide(GameObject& _collider)
 			}
 			else
 			{
-				//bool newPosition = AttemptBack(sf::Vector2f(0.0f, 1.0f));
-				
-				//m_sprite.move(0.0f, -50.0f);
-				//sf::Vector2f m_newvelocity;
-				//m_newvelocity = sf::Vector2f(m_velocity.x, m_velocity.y) * -1.0f;
-
-				//m_velocity *= -10.0f;
 				m_sprite.move(m_velocity * -0.125f);
 				// set velocity to -1 instead
 				m_health -= 35;
@@ -293,13 +286,4 @@ void Player::SetToolkit(bool _hasTool)
 bool Player::GetToolkit()
 {
 	return hasToolbox;
-}
-bool Player::AttemptBack(sf::Vector2f _direction)
-{
-	m_previousPosition = m_oldPosition;
-	sf::Vector2f targetPos = m_oldPosition - _direction;
-		//m_newPosition = m_oldPosition - new sf::Vector2f(10.0f, 0.0f);
-		//m_sprite.setPosition(m_previousPosition - new sf::Vector2f(10.0f, 0.0f));
-	m_sprite.setPosition(targetPos - _direction);
-	return true;
 }

@@ -23,6 +23,7 @@ Shooter::Shooter()
 
 void Shooter::Update(sf::Time _frameTime)
 {
+	
 	m_secondsPerShoot += _frameTime.asSeconds();
 	if (m_secondsPerShoot > 2.0f)
 	{
@@ -41,7 +42,7 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		if (m_bullet != nullptr)
 		{
-			m_bullet->SetPosition((this)->GetPosition());
+			//m_bullet->SetPosition();
 			// add the bullet movement code here. 
 			// look up c# from year 1
 			//m_bullet->SetActive(true);
