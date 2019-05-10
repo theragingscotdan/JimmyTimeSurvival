@@ -155,7 +155,7 @@ void Player::Collide(GameObject& _collider)
 			{
 				m_sprite.move(-50.0f, 0.0f);
 				m_health -= 35;
-				
+				m_tookDamage = true;
 				
 			}
 		}
@@ -173,10 +173,12 @@ void Player::Collide(GameObject& _collider)
 			{
 				//bool newPosition = AttemptBack(sf::Vector2f(0.0f, 1.0f));
 				
-				m_sprite.move(0.0f, -50.0f);
-				// m_velocity (1.0f,)
+				//m_sprite.move(0.0f, -50.0f);
+				//sf::Vector2f m_newvelocity;
+				//_newvelocity	 = sf::Vector2f(m_velocity.x, m_velocity.y) * -1.0f;
 				// set velocity to -1 instead
 				m_health -= 35;
+				m_tookDamage = true;
 			}
 		}
 	} 
