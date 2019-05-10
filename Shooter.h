@@ -16,6 +16,6 @@ private:
 	//Player* m_player;
 	float m_secondsPerShoot;
 	bool m_shoot;
-	//bool GetShoot();
+	bool GetShoot();
 	Bullet* m_bullet;
 };

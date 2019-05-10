@@ -3,7 +3,7 @@
 #include "MovingObject.h"
 
 
-class Bullet : MovingObject
+class Bullet : public MovingObject
 {
 public:
 	Bullet();
@@ -17,6 +17,7 @@ private:
 	sf::Vector2f m_bullet;
 	//sf::Vector
 	float m_firedTime;
+	
 
 	void Despawn();
 	

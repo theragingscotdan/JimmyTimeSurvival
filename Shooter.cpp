@@ -24,10 +24,11 @@ Shooter::Shooter()
 void Shooter::Update(sf::Time _frameTime)
 {
 	m_secondsPerShoot += _frameTime.asSeconds();
-	if (m_secondsPerShoot > 4.0f)
+	if (m_secondsPerShoot > 2.0f)
 	{
 		m_shoot = true;
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold"));
+		//m_bullet->
 		m_secondsPerShoot = 0.0f;
 	}
 	else
@@ -40,9 +41,11 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		if (m_bullet != nullptr)
 		{
+			//m_bullet->SetPosition(this->GetPosition());
 			// add the bullet movement code here. 
 			// look up c# from year 1
-			m_bullet->SetActive(true);
+			//m_bullet->SetActive(true);
+			
 			//m_velocity
 		}
 	}
@@ -53,7 +56,7 @@ void Shooter::Collide(GameObject& _collider)
 
 }
 
-/*bool Shooter::GetShoot()
+bool Shooter::GetShoot()
 {
 	return m_shoot;
-} */
+} 

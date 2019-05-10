@@ -13,6 +13,7 @@
 #include "Alarmer.h"
 #include "Key.h"
 #include "ExitLvl2.h"
+#include "Bullet.h"
 
 // library includes
 #include <iostream>
@@ -287,6 +288,15 @@ void Level::LoadLevel(int _levelToLoad)
 	health->SetPlayer(player);
 	m_updateList.push_back(health);
 	m_drawListUI.push_back(health);
+
+	
+	Bullet* bullet = new Bullet();
+	m_drawListWorld.push_back(bullet);
+	m_updateList.push_back(bullet);
+	m_collisionList.push_back(std::make_pair(player, bullet));
+		
+	
+
 
 }
 

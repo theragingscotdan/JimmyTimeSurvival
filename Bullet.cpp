@@ -15,17 +15,24 @@ Bullet::Bullet()
 
 void Bullet::Update(sf::Time _frameTime)
 {
-	
-	
+	//sf::Vector2f m_currentPosition;
+	sf::Vector2f m_currentPosition = m_sprite.getPosition();
+	//if ()
 	if (m_active)
 	{
-		//m_bullet.
-		//m_bullet.
-		//m_currentPosition += m_velocity;
 		m_firedTime += _frameTime.asSeconds();
+		//m_bullet.
+		//m_bullet.
+
+		m_currentPosition += sf::Vector2f(0.0f, 0.5f);
+		
+		
+		//m_newPosition;
+		m_sprite.setPosition(m_currentPosition);
 		
 	}
 
+	MovingObject::Update(_frameTime);
 }
 
 void Bullet::Collide(GameObject& _collider)
@@ -37,9 +44,11 @@ void Bullet::Collide(GameObject& _collider)
 
 		if (castPlayer != nullptr)
 		{
-			castPlayer->LoseHealth(45);
 			// then delete itself
 			Despawn();
+			castPlayer->LoseHealth(45);
+			castPlayer->SetTookDamage(true);
+			
 		}
 
 		Wall* castWall = dynamic_cast<Wall*>(&_collider);
