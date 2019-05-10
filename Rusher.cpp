@@ -21,7 +21,8 @@ void Rusher::Update(sf::Time _frameTime)
 
 	 // TODO: get postion via a setter from level
 	// add a position vector to move
-	m_startPoint = m_sprite.getPosition();
+	//m_startPoint = m_sprite.getPosition();
+	//m_endPoint = m_startPoint += (x, y);
 
 	MovingObject::Update(_frameTime);
 }
