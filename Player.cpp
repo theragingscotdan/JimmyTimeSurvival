@@ -181,7 +181,7 @@ void Player::Collide(GameObject& _collider)
 	else if (blockedCollider != nullptr)
 	{
 		//if (blockedCollider)
-		if (!hasToolbox)
+		if (!hasToolbox)// || !hasKey)
 		{
 			m_sprite.setPosition(m_previousPosition);
 		}

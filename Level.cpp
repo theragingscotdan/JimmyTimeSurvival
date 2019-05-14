@@ -14,6 +14,7 @@
 #include "Key.h"
 #include "ExitLvl2.h"
 #include "Bullet.h"
+#include "Door.h"
 
 // library includes
 #include <iostream>
@@ -268,6 +269,16 @@ void Level::LoadLevel(int _levelToLoad)
 			m_drawListWorld.push_back(blocked);
 			//m_collisionList.push_back(std::make_pair(blocked, player));
 			m_collisionList.push_back(std::make_pair(player, blocked));
+
+		}
+		else if (ch == 'D')
+		{
+		Door* door = new Door();
+		door->SetPosition(x, y);
+		m_updateList.push_back(door);
+		m_drawListWorld.push_back(door);
+		//m_collisionList.push_back(std::make_pair(blocked, player));
+		m_collisionList.push_back(std::make_pair(player, door));
 
 		}
 
