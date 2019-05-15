@@ -23,6 +23,8 @@ public:
 	void AdvanceLevel();
 	void SetToolkit(bool _hasTool);
 	bool GetToolkit();
+	int GetKeys();
+	void SetKeys(int _keys);
 
 protected:
 
@@ -38,6 +40,9 @@ private:
 	bool hasToolbox;
 	int m_lives;
 	sf::Vector2f m_oldPosition;
+	int m_currentHP;
+	int m_keys;
+	
 
 	//bool AttemptBack(sf::Vector2f _direction);
 

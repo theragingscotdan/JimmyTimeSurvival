@@ -13,8 +13,10 @@
 #include "Alarmer.h"
 #include "Key.h"
 #include "ExitLvl2.h"
+#include "ExitLvl3.h"
 #include "Bullet.h"
 #include "Door.h"
+#include "KeyText.h"
 
 // library includes
 #include <iostream>
@@ -29,7 +31,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(1);
+	LoadLevel(3);
 }
 
 
@@ -271,6 +273,16 @@ void Level::LoadLevel(int _levelToLoad)
 			m_collisionList.push_back(std::make_pair(player, blocked));
 
 		}
+		else if (ch == 'L')
+		{
+		ExitLvl3* denied = new ExitLvl3();
+		denied->SetPosition(x, y);
+		m_updateList.push_back(denied);
+		m_drawListWorld.push_back(denied);
+		//m_collisionList.push_back(std::make_pair(blocked, player));
+		m_collisionList.push_back(std::make_pair(player, denied));
+
+		}
 		else if (ch == 'D')
 		{
 		Door* door = new Door();
@@ -299,6 +311,11 @@ void Level::LoadLevel(int _levelToLoad)
 	health->SetPlayer(player);
 	m_updateList.push_back(health);
 	m_drawListUI.push_back(health);
+
+	KeyText* key = new KeyText();
+	key->SetPlayer(player);
+	m_updateList.push_back(key);
+	m_drawListUI.push_back(key);
 
 	
 	

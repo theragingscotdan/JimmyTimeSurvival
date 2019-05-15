@@ -22,6 +22,8 @@ Player::Player()
 	, hasToolbox(false)
 	, m_lives(3)
 	, m_oldPosition(0.0f, 0.0f)
+	, m_currentHP(100)
+	,m_keys(0)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
@@ -274,6 +276,7 @@ void Player::AdvanceLevel()
 {
 	if (m_level != nullptr)
 	{
+		m_currentHP = m_health;
 		m_level->LoadNextLevel();
 	}
 } 
@@ -286,4 +289,14 @@ void Player::SetToolkit(bool _hasTool)
 bool Player::GetToolkit()
 {
 	return hasToolbox;
+}
+
+int Player::GetKeys()
+{
+	return m_keys;
+}
+
+void Player::SetKeys(int _keys)
+{
+	m_keys += _keys;
 }
