@@ -11,6 +11,7 @@ public:
 		Shooter();
 		void Update(sf::Time _frameTime);
 		virtual void Collide(GameObject& _collider);
+		void SetStartPosition(sf::Vector2f _start);
 
 private:
 	//Player* m_player;

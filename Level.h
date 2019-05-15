@@ -5,6 +5,8 @@
 
 // project includes
 
+// forward declaration
+class Player;
 
 class Level
 {
@@ -26,7 +28,7 @@ private:
 	int m_currentLevel;
 	int m_pendingLevel;
 
-	GameObject* m_player;
+	Player* m_player;
 	std::vector<GameObject*> m_updateList;
 	std::vector<GameObject*> m_drawListWorld;
 	std::vector<GameObject*> m_drawListUI;

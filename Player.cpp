@@ -276,7 +276,7 @@ void Player::AdvanceLevel()
 {
 	if (m_level != nullptr)
 	{
-		m_currentHP = m_health;
+		
 		m_level->LoadNextLevel();
 	}
 } 

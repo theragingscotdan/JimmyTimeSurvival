@@ -61,3 +61,8 @@ bool Shooter::GetShoot()
 {
 	return m_shoot;
 } 
+
+void Shooter::SetStartPosition(sf::Vector2f _start)
+{
+	//m_startPosition = _start;
+}

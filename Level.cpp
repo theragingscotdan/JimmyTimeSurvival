@@ -31,7 +31,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(3);
+	LoadLevel(2);
 }
 
 
@@ -97,8 +97,13 @@ void Level::Update(sf::Time _frameTime)
 
 void Level::LoadLevel(int _levelToLoad)
 {
+	int currentHealth = 0;
 	// TODO: Clean up level/old level
+	if (m_player != nullptr)
+	{
+		currentHealth = m_player->GetHealth();
 
+	}
 	// delete any data already in the level
 	for (int i = 0; i < m_updateList.size(); ++i)
 	{
@@ -139,6 +144,10 @@ void Level::LoadLevel(int _levelToLoad)
 	// create the player first as other objects will need to reference it
 	Player* player = new Player();
 	m_player = player;
+	if (currentHealth > 0)
+	{
+		m_player->SetHealth(currentHealth);
+	}
 
 	// read each character one by one from the file
 	char ch;
@@ -225,6 +234,7 @@ void Level::LoadLevel(int _levelToLoad)
 		{
 			Shooter* gun = new Shooter();
 			gun->SetPosition(x, y);
+			gun->SetStartPosition(sf::Vector2f (x, y));
 			m_updateList.push_back(gun);
 			m_drawListWorld.push_back(gun);
 			m_collisionList.push_back(std::make_pair(gun, player));
@@ -236,6 +246,7 @@ void Level::LoadLevel(int _levelToLoad)
 		{
 			Rusher* rush = new Rusher();
 			rush->SetPosition(x, y);
+			rush->SetStartPosition(sf::Vector2f(x, y));
 			m_updateList.push_back(rush);
 			m_drawListWorld.push_back(rush);
 			m_collisionList.push_back(std::make_pair(rush, player));
@@ -248,6 +259,7 @@ void Level::LoadLevel(int _levelToLoad)
 		{
 			Alarmer* alarm = new Alarmer();
 			alarm->SetPosition(x, y);
+			alarm->SetStartPosition(sf::Vector2f(x, y));
 			m_updateList.push_back(alarm);
 			m_drawListWorld.push_back(alarm);
 			m_collisionList.push_back(std::make_pair(alarm, player));

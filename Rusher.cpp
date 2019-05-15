@@ -14,10 +14,10 @@ Rusher::Rusher()
 void Rusher::Update(sf::Time _frameTime)
 {
 	//m_player-> 
-	//m_startPoint = m_currentPosition;
 	m_secondsPassed += _frameTime.asSeconds();
 
 	m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+	m_sprite.setPosition(m_position);
 
 	 // TODO: get postion via a setter from level
 	// add a position vector to move
@@ -37,3 +37,8 @@ void Rusher::Collide(GameObject& _collider)
 // if the player is in vision charge towards the player
 // if it hits a wall while charging, stun it
 // if it hits the player damage player
+
+void Rusher::SetStartPosition(sf::Vector2f _start)
+{
+	m_startPoint = _start;
+}

@@ -11,7 +11,8 @@ public:
 	
 	void Update(sf::Time _frameTime);
 	void Collide(GameObject& _collider);
-
+	void SetStartPosition(sf::Vector2f _start);
+	
 private:
 	sf::Vector2f m_startPoint;
 	sf::Vector2f m_endPoint;
