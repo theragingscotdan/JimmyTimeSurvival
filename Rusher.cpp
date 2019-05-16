@@ -17,6 +17,7 @@ void Rusher::Update(sf::Time _frameTime)
 	m_secondsPassed += _frameTime.asSeconds();
 
 	m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+	m_endPoint = m_startPoint + sf::Vector2f(-300.0f, 0.0f);
 	m_sprite.setPosition(m_position);
 
 	 // TODO: get postion via a setter from level
