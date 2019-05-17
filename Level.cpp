@@ -247,6 +247,7 @@ void Level::LoadLevel(int _levelToLoad)
 			Rusher* rush = new Rusher();
 			rush->SetPosition(x, y);
 			rush->SetStartPosition(sf::Vector2f(x, y));
+			//rush->SetEndPositon(sf::Vector2f(x, y));
 			m_updateList.push_back(rush);
 			m_drawListWorld.push_back(rush);
 			m_collisionList.push_back(std::make_pair(rush, player));
@@ -332,6 +333,7 @@ void Level::LoadLevel(int _levelToLoad)
 	
 	
 	Bullet* bullet = new Bullet();
+	//bullet->SetStartPosition();
 	m_drawListWorld.push_back(bullet);
 	m_updateList.push_back(bullet);
 	m_collisionList.push_back(std::make_pair(player, bullet));

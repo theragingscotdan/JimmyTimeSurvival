@@ -42,7 +42,9 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		if (m_bullet != nullptr)
 		{
-			//m_bullet->SetPosition();
+			m_bullet = new Bullet();
+			m_bullet->SetStartPosition(this->m_sprite.getPosition());
+			//m_bullet->SetStartPosition();
 			// add the bullet movement code here. 
 			// look up c# from year 1
 			//m_bullet->SetActive(true);
@@ -64,5 +66,5 @@ bool Shooter::GetShoot()
 
 void Shooter::SetStartPosition(sf::Vector2f _start)
 {
-	//m_startPosition = _start;
+	m_startPosition = _start;
 }

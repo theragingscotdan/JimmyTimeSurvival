@@ -4,11 +4,13 @@
 #include "Framework/AssetManager.h"
 
 #define SPEED 300f;
+#define DISTANCE 400f;
 
 Bullet::Bullet()
 	: MovingObject()
 	, m_bullet(0.0f, 0.0f)
 	, m_firedTime(0.0f)
+	, m_distanceTravelled(0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/bullet.png"));
 }
@@ -20,11 +22,13 @@ void Bullet::Update(sf::Time _frameTime)
 	//if ()
 	if (m_active)
 	{
-		m_firedTime += _frameTime.asSeconds();
+		//m_firedTime += _frameTime.asSeconds();
 		//m_bullet.
 		//m_bullet.
-
+		
 		m_currentPosition += sf::Vector2f(0.0f, 0.5f);
+
+		m_distanceTravelled += 1.0f;
 		
 		
 		//m_newPosition;
@@ -64,6 +68,11 @@ void Bullet::Collide(GameObject& _collider)
 void Bullet::SetActive(bool _active)
 {
 	m_active = _active;
+}
+
+void Bullet::SetStartPosition(sf::Vector2f _start)
+{
+	//m_curr
 }
 
 void Bullet::Despawn()

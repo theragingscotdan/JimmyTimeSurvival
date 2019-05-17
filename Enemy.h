@@ -24,6 +24,7 @@ protected:
 	bool m_playerseen;
 	float m_secondsPassed;
 	float m_duration;
+	//sf::Vector2f m_modifier;
 
 	sf::Vector2f QuadEaseOut(float time, float duration, sf::Vector2f startingPoint, sf::Vector2f endPoint);
 

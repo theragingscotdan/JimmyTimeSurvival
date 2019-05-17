@@ -7,6 +7,7 @@ Enemy::Enemy()
 	, m_playerseen(false)
 	, m_secondsPassed(0.0f)
 	, m_duration(5.0f)
+	//, m_modifier(0.0f, 0.0f)
 {
 
 }
