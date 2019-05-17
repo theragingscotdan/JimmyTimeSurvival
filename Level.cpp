@@ -233,6 +233,7 @@ void Level::LoadLevel(int _levelToLoad)
 		else if (ch == 'G')
 		{
 			Shooter* gun = new Shooter();
+			gun->SetLevel(this);
 			gun->SetPosition(x, y);
 			gun->SetStartPosition(sf::Vector2f (x, y));
 			m_updateList.push_back(gun);
@@ -332,12 +333,7 @@ void Level::LoadLevel(int _levelToLoad)
 
 	
 	
-	Bullet* bullet = new Bullet();
-	//bullet->SetStartPosition();
-	bullet->SetPosition(100.0f, 100.0f);
-	m_drawListWorld.push_back(bullet);
-	m_updateList.push_back(bullet);
-	m_collisionList.push_back(std::make_pair(player, bullet));
+
 		
 	
 
@@ -360,4 +356,11 @@ void Level::LoadNextLevel()
 int Level::GetLevel()
 {
 	return m_currentLevel;
+}
+
+void Level::AddObject(GameObject* _object)
+{
+	m_drawListWorld.push_back(_object);
+	m_updateList.push_back(_object);
+	m_collisionList.push_back(std::make_pair(_object, m_player));
 }

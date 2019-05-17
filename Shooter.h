@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Bullet.h"
 
+class Level;
 
 class Shooter : public Enemy 
 {
@@ -12,6 +13,7 @@ public:
 		void Update(sf::Time _frameTime);
 		virtual void Collide(GameObject& _collider);
 		void SetStartPosition(sf::Vector2f _start);
+		void SetLevel(Level* _level);
 
 private:
 	//Player* m_player;
@@ -20,5 +22,6 @@ private:
 	bool GetShoot();
 	//Bullet* m_bullet;
 	sf::Vector2f m_startPosition;
+	Level* m_level;
 	
 };

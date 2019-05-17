@@ -8,6 +8,7 @@ Shooter::Shooter()
 	: Enemy()
 	, m_secondsPerShoot(0.0f)
 	, m_shoot(false)
+	, m_level(nullptr)
 	//, m_bullet(nullptr)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
@@ -45,7 +46,7 @@ void Shooter::Update(sf::Time _frameTime)
 		if (m_bullet != nullptr)
 		{
 			//m_bullet = new Bullet();
-			m_bullet->SetStartPosition(this->m_sprite.getPosition());
+			m_bullet->SetPosition(this->m_sprite.getPosition());
 			m_bullet->SetActive(true);
 			//m_bullet->SetStartPosition();
 			// add the bullet movement code here. 
@@ -53,6 +54,8 @@ void Shooter::Update(sf::Time _frameTime)
 			//m_bullet->SetActive(true);
 			
 			//m_velocity
+
+			m_level->AddObject(m_bullet);
 		}
 	}
 }
@@ -70,4 +73,9 @@ bool Shooter::GetShoot()
 void Shooter::SetStartPosition(sf::Vector2f _start)
 {
 	m_startPosition = _start;
+}
+
+void Shooter::SetLevel(Level* _level)
+{
+	m_level = _level;
 }

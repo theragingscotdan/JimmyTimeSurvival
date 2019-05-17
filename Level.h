@@ -21,7 +21,7 @@ public:
 	void ReloadLevel();
 	void LoadNextLevel();
 	int GetLevel();
-
+	void AddObject(GameObject* _object);
 
 private:
 
