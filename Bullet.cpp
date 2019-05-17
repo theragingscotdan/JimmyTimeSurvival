@@ -42,6 +42,7 @@ void Bullet::Update(sf::Time _frameTime)
 void Bullet::Collide(GameObject& _collider)
 {
 	Player* castPlayer = dynamic_cast <Player*>(&_collider);
+	Wall* castWall = dynamic_cast<Wall*>(&_collider);
 	if (m_active)
 	{
 		
@@ -54,13 +55,13 @@ void Bullet::Collide(GameObject& _collider)
 			castPlayer->SetTookDamage(true);
 			
 		}
-
-		Wall* castWall = dynamic_cast<Wall*>(&_collider);
-
-		if (castWall != nullptr)
+		else
 		{
-			// delete itself
-			Despawn();
+			if (castWall != nullptr)
+			{
+				// delete itself
+				Despawn();
+			}
 		}
 	}
 }

@@ -144,6 +144,7 @@ void Level::LoadLevel(int _levelToLoad)
 	// create the player first as other objects will need to reference it
 	Player* player = new Player();
 	m_player = player;
+
 	if (currentHealth > 0)
 	{
 		m_player->SetHealth(currentHealth);
