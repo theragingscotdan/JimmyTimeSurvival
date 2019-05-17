@@ -333,7 +333,7 @@ void Level::LoadLevel(int _levelToLoad)
 	
 	
 	Bullet* bullet = new Bullet();
-	//bullet->SetStartPosition();
+	//bullet->SetStartPosition(x, y);
 	m_drawListWorld.push_back(bullet);
 	m_updateList.push_back(bullet);
 	m_collisionList.push_back(std::make_pair(player, bullet));
