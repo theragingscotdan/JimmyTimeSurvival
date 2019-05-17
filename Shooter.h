@@ -18,7 +18,7 @@ private:
 	float m_secondsPerShoot;
 	bool m_shoot;
 	bool GetShoot();
-	Bullet* m_bullet;
+	//Bullet* m_bullet;
 	sf::Vector2f m_startPosition;
 	
 };

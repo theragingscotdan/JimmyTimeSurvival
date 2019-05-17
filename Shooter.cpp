@@ -1,4 +1,5 @@
 #include "Shooter.h"
+#include "Bullet.h"
 #include "Framework/AssetManager.h"
 
 #define DISTANCE 300.0f
@@ -7,7 +8,7 @@ Shooter::Shooter()
 	: Enemy()
 	, m_secondsPerShoot(0.0f)
 	, m_shoot(false)
-	, m_bullet(nullptr)
+	//, m_bullet(nullptr)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
 }
@@ -29,7 +30,7 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		m_shoot = true;
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold"));
-		//m_bullet->
+		//m_bullet->SetActive(true);
 		m_secondsPerShoot = 0.0f;
 	}
 	else
@@ -40,10 +41,12 @@ void Shooter::Update(sf::Time _frameTime)
 
 	if (m_shoot)
 	{
+		Bullet* m_bullet = new Bullet();
 		if (m_bullet != nullptr)
 		{
-			m_bullet = new Bullet();
+			//m_bullet = new Bullet();
 			m_bullet->SetStartPosition(this->m_sprite.getPosition());
+			m_bullet->SetActive(true);
 			//m_bullet->SetStartPosition();
 			// add the bullet movement code here. 
 			// look up c# from year 1

@@ -8,7 +8,7 @@
 
 Bullet::Bullet()
 	: MovingObject()
-	, m_bullet(0.0f, 0.0f)
+	, m_bulletSpawn(0.0f, 0.0f)
 	, m_firedTime(0.0f)
 	, m_distanceTravelled(0.0f)
 {
@@ -41,10 +41,10 @@ void Bullet::Update(sf::Time _frameTime)
 
 void Bullet::Collide(GameObject& _collider)
 {
-	
+	Player* castPlayer = dynamic_cast <Player*>(&_collider);
 	if (m_active)
 	{
-		Player* castPlayer = dynamic_cast <Player*>(&_collider);
+		
 
 		if (castPlayer != nullptr)
 		{
@@ -72,7 +72,7 @@ void Bullet::SetActive(bool _active)
 
 void Bullet::SetStartPosition(sf::Vector2f _start)
 {
-	//m_curr
+	//m_currentPosition = _start;
 }
 
 void Bullet::Despawn()
