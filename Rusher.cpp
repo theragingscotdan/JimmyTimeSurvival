@@ -8,9 +8,9 @@ Rusher::Rusher()
 {
 	
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/buffalo.png"));
-	// m_modifier = sf::Vector2f(300.0f, 0.0f);
+	m_modifier = sf::Vector2f(300.0f, 0.0f);
 	
-
+	
 	
 }
 
@@ -22,7 +22,8 @@ void Rusher::Update(sf::Time _frameTime)
 	m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
 	
 
-	m_endPoint = m_startPoint - sf::Vector2f(300.0, 0.0f);
+	//m_endPoint = m_startPoint - sf::Vector2f(300.0f, 0.0f);
+	m_endPoint = m_startPoint - m_modifier;
 		//- m_modifier;
 	
 
@@ -32,9 +33,9 @@ void Rusher::Update(sf::Time _frameTime)
 
 		sf::Vector2f oldStart = m_startPoint;
 		sf::Vector2f oldEnd = m_endPoint;
-		//m_modifier = (m_modifier * -1.0f);
+		m_modifier = (m_modifier * -1.0f);
 		m_startPoint = oldEnd;
-		m_endPoint = oldStart * -1.0f;
+		m_endPoint = oldStart;
 	}
 
 	m_sprite.setPosition(m_position);

@@ -18,6 +18,7 @@ private:
 	sf::Vector2f m_startPoint;
 	sf::Vector2f m_endPoint;
 	sf::Vector2f m_position;
+	
 
 	bool m_Charge;
 
