@@ -7,6 +7,8 @@ class Alarmer : public Enemy
 public:
 	Alarmer();
 
+	void Update(sf::Time _frameTime);
+	void SightTime(sf::Time _frameTime);
 	void Collide(GameObject& _collider);
 	void SetStartPosition(sf::Vector2f _start);
 
@@ -24,6 +26,7 @@ private:
 	State m_state;
 	void UpdateState(State _state);
 	bool m_hasVision;
-	
+	float m_timeTillTransition;
+
 };
 

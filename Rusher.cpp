@@ -3,7 +3,7 @@
 
 Rusher::Rusher()
 	:Enemy()
-	, m_Charge(false)
+	, m_charge(false)
 	, m_position(0.0f, 0.0f)
 	, m_currentState(STATE_PATROL)
 {
@@ -76,35 +76,35 @@ void Rusher::UpdateState(State _state)
 	{
 		switch (m_currentState)
 		{
-			case STATE_PATROL
+		case STATE_PATROL :
 		
 			// run the current patrol code currently located in update
 				//m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
 				//break;
-				//if (DistanceFromPlayer <= (200.0f, 200.0f))
+				//if (DistanceFromPlayer <= sf::Vector2f(200.0f, 200.0f))
 				
-					m_currentState(STATE_ATTACK);
+					//m_currentState(STATE_ATTACK);
 			
 				break;
-			case STATE_ATACK
+			case STATE_ATTACK :
 			
 				//if (m_player
 				//break;
 			
 				break;
-				case STATE_CHARGE
+			case STATE_CHARGE :
 			
 				// charge towards the player
 				m_charge = true;
 				break;
 			
 				//break;
-				case STATE_STUNNED
+			case STATE_STUNNED :
 			
 				break;
 			
 				//break;
-				case STATE_RETURN
+			case STATE_RETURN :
 			
 				break;
 			

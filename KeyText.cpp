@@ -17,7 +17,7 @@ void KeyText::Update(sf::Time _frameTime)
 	if (m_player != nullptr)
 	{
 		int keys = m_player->GetKeys();
-		m_Text.setString("keys: " + std::to_string(keys));
+		m_Text.setString("Keys: " + std::to_string(keys));
 	}
 
 }
