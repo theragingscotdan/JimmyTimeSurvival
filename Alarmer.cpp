@@ -58,6 +58,15 @@ void Alarmer::UpdateState(State _state)
 		case STATE_BLIND :
 
 				//SightTime();
+			/*if (m_timeTillTransition <= 5.0f)
+			{
+				STATE_BLIND;
+			}
+			else
+			{
+				STATE_VISION;
+				m_timeTillTransition = 0;
+			} */
 		
 			
 			break;
