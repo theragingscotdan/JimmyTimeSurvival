@@ -26,7 +26,7 @@ Player::Player()
 	,m_keys(0)
 	
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand.png"));
 }
 
 void Player::Update(sf::Time _frameTime)
@@ -81,7 +81,7 @@ void Player::Update(sf::Time _frameTime)
 		else
 		{
 			m_canAttack = true;
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown.png"));
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand.png"));
 			m_tookDamage = false;
 			m_timeSinceDamage = 0.0f;
 			

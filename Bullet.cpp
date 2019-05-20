@@ -51,8 +51,9 @@ void Bullet::Collide(GameObject& _collider)
 		{
 			// then delete itself
 			Despawn();
-			castPlayer->LoseHealth(45);
 			castPlayer->SetTookDamage(true);
+			castPlayer->LoseHealth(45);
+			
 			
 		}
 		else

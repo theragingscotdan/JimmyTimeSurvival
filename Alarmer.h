@@ -15,11 +15,15 @@ private:
 
 	enum State
 	{
-		STATE_PASSIVE,
+		STATE_BLIND,
+		STATE_VISION,
 		STATE_SPOTTED,
 		STATE_ALERT
 	};
 
 	State m_state;
+	void UpdateState(State _state);
+	bool m_hasVision;
+	
 };
 

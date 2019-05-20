@@ -32,5 +32,5 @@ public:
 
 	State m_currentState;
 
-	void UpdateState(State m_currentState);
+	void UpdateState(State _State);
 };

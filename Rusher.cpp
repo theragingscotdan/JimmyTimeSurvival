@@ -70,41 +70,50 @@ void Rusher::SetEndPositon(sf::Vector2f _end)
 	m_endPoint = _end;
 }
 
-//void Rusher::UpdateState(State m_currentState)
-//{
-enum Rusher::State
-{
-	switch(m_currentState)
+void Rusher::UpdateState(State _state)
+{ 
+	m_currentState = _state;
 	{
-		case STATE_PATROL
+		switch (m_currentState)
 		{
+			case STATE_PATROL
+		
 			// run the current patrol code currently located in update
-			m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+				//m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+				//break;
+				//if (DistanceFromPlayer <= (200.0f, 200.0f))
+				
+					m_currentState(STATE_ATTACK);
+			
+				break;
+			case STATE_ATACK
+			
+				//if (m_player
+				//break;
+			
+				break;
+				case STATE_CHARGE
+			
+				// charge towards the player
+				m_charge = true;
+				break;
+			
+				//break;
+				case STATE_STUNNED
+			
+				break;
+			
+				//break;
+				case STATE_RETURN
+			
+				break;
+			
+				//break;
+
+
+
 
 		}
-		break;
-		case STATE_ATACK
-		{
-
-		}
-		break;
-		case STATE_CHARGE
-		{
-			// charge towards the player
-		}
-		break;
-		case STATE_STUNNED
-		{
-
-		}
-		break;
-		case STATE_RETURN
-		{
-
-		}
-		break;
-		
-		
-	}
+	};
 }
 	 
