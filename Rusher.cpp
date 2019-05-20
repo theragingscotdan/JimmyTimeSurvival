@@ -5,6 +5,7 @@ Rusher::Rusher()
 	:Enemy()
 	, m_Charge(false)
 	, m_position(0.0f, 0.0f)
+	, m_currentState(STATE_PATROL)
 {
 	
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/buffalo.png"));
@@ -68,3 +69,42 @@ void Rusher::SetEndPositon(sf::Vector2f _end)
 {
 	m_endPoint = _end;
 }
+
+//void Rusher::UpdateState(State m_currentState)
+//{
+enum Rusher::State
+{
+	switch(m_currentState)
+	{
+		case STATE_PATROL
+		{
+			// run the current patrol code currently located in update
+			m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
+
+		}
+		break;
+		case STATE_ATACK
+		{
+
+		}
+		break;
+		case STATE_CHARGE
+		{
+			// charge towards the player
+		}
+		break;
+		case STATE_STUNNED
+		{
+
+		}
+		break;
+		case STATE_RETURN
+		{
+
+		}
+		break;
+		
+		
+	}
+}
+	 

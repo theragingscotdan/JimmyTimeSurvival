@@ -12,5 +12,14 @@ public:
 
 private:
 	sf::Vector2f m_position;
+
+	enum State
+	{
+		STATE_PASSIVE,
+		STATE_SPOTTED,
+		STATE_ALERT
+	};
+
+	State m_state;
 };
 

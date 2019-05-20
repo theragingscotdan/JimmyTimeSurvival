@@ -33,11 +33,11 @@ void Enemy::Vision(sf::Vector2f)
 
 }
 
-double Enemy::LinearInterpolate(double x0, double x1, double y0, double y1, double x)
+/*double Enemy::LinearInterpolate(double x0, double x1, double y0, double y1, double x)
 {
 	return y0 + (x - x0) * (y1 - y0) / (x1 - x0);
 }
-
+*/
 sf::Vector2f Enemy::QuadEaseOut(float time, float duration, sf::Vector2f startingPoint, sf::Vector2f endPoint)
 {
 	float t = time / duration;

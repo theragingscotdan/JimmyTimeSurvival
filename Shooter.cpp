@@ -30,14 +30,14 @@ void Shooter::Update(sf::Time _frameTime)
 	if (m_secondsPerShoot > 2.0f)
 	{
 		m_shoot = true;
-		m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold"));
+		//m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold"));
 		//m_bullet->SetActive(true);
 		m_secondsPerShoot = 0.0f;
 	}
 	else
 	{
 		m_shoot = false;
-		m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
+		//m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
 	} 
 
 	if (m_shoot)
