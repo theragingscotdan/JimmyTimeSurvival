@@ -108,6 +108,9 @@
     <ClCompile Include="KeyText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lives.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -192,6 +195,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="KeyText.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lives.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

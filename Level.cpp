@@ -17,10 +17,13 @@
 #include "Bullet.h"
 #include "Door.h"
 #include "KeyText.h"
+#include "Lives.h"
 
 // library includes
 #include <iostream>
 #include <fstream>
+
+//#define MAXLIVES 3;
 
 Level::Level()
 	: m_currentLevel(0)
@@ -31,7 +34,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(4);
+	LoadLevel(3);
 }
 
 
@@ -332,8 +335,10 @@ void Level::LoadLevel(int _levelToLoad)
 	m_updateList.push_back(key);
 	m_drawListUI.push_back(key);
 
-	
-	
+	Lives* life = new Lives();
+	life->SetPlayer(player);
+	m_updateList.push_back(life);
+	m_drawListUI.push_back(life);	
 
 		
 	

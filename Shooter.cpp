@@ -27,6 +27,7 @@ void Shooter::Update(sf::Time _frameTime)
 {
 	
 	m_secondsPerShoot += _frameTime.asSeconds();
+	sf::Vector2f offset(15.0f, 40.0f);
 	if (m_secondsPerShoot > 2.0f)
 	{
 		m_shoot = true;
@@ -43,10 +44,11 @@ void Shooter::Update(sf::Time _frameTime)
 	if (m_shoot)
 	{
 		Bullet* m_bullet = new Bullet();
+		m_level->AddObject(m_bullet);
 		if (m_bullet != nullptr)
 		{
 			//m_bullet = new Bullet();
-			m_bullet->SetPosition(this->m_sprite.getPosition());
+			m_bullet->SetPosition(this->m_sprite.getPosition() + offset);
 			m_bullet->SetActive(true);
 			//m_bullet->SetStartPosition();
 			// add the bullet movement code here. 
@@ -55,8 +57,9 @@ void Shooter::Update(sf::Time _frameTime)
 			
 			//m_velocity
 
-			m_level->AddObject(m_bullet);
+			//m_level->AddObject(m_bullet);
 		}
+		
 	}
 }
 

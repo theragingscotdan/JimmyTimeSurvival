@@ -22,14 +22,17 @@ void Bullet::Update(sf::Time _frameTime)
 	//if ()
 	if (m_active)
 	{
-		//m_firedTime += _frameTime.asSeconds();
+		m_firedTime += _frameTime.asSeconds();
 		//m_bullet.
 		//m_bullet.
-		
+				
 		m_currentPosition += sf::Vector2f(0.0f, 0.5f);
 
-		m_distanceTravelled += 1.0f;
-		
+		//m_distanceTravelled += 1.0f;
+		if (m_firedTime >= 4.0f)
+		{
+			m_active = false;
+		}
 		
 		//m_newPosition;
 		m_sprite.setPosition(m_currentPosition);

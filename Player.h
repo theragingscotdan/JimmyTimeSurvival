@@ -25,6 +25,7 @@ public:
 	bool GetToolkit();
 	int GetKeys();
 	void SetKeys(int _keys);
+	bool GetLives();
 
 protected:
 

@@ -5,9 +5,11 @@
 #include "Rusher.h"
 #include "Shooter.h"
 #include "ExitLvl2.h"
+#include "ExitLvl3.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 250.0f
+//#define MAXLIVES 3;
 
 Player::Player()
 	: MovingObject()
@@ -23,7 +25,7 @@ Player::Player()
 	, m_lives(3)
 	, m_oldPosition(0.0f, 0.0f)
 	, m_currentHP(100)
-	,m_keys(0)
+	, m_keys(0)
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand1.png"));
@@ -108,7 +110,8 @@ void Player::Collide(GameObject& _collider)
 	Rusher* rusherCollider = dynamic_cast<Rusher*>(&_collider);
 	Shooter* shooterCollider = dynamic_cast<Shooter*>(&_collider);
 	ExitLvl2* blockedCollider = dynamic_cast<ExitLvl2*>(&_collider);
-
+	ExitLvl3* deniedCollider = dynamic_cast<ExitLvl3*>(&_collider);
+	
 
 	// if it was a wall we hit, we need to move ourselves
 	//outside the wall's bounds, aka back where we were
@@ -193,12 +196,31 @@ void Player::Collide(GameObject& _collider)
 		}
 
 	} 
+	else if (deniedCollider != nullptr)
+	{
+		//if (blockedCollider)
+		if (m_keys < 2)// || !hasKey)
+		{
+			m_sprite.setPosition(m_previousPosition);
+		}
+		else 
+			
+		{
+			deniedCollider->SetActive(false);
+		}
+
+	}
 
 	
 	if (m_health <= 0)
 	{
 		Kill();
 		m_lives--;
+	}
+
+	if (m_lives <= 0)
+	{
+		
 	}
 }
 void Player::AddHealth(int _changeBy)
@@ -236,6 +258,10 @@ void Player::SetTookDamage(bool _damaged)
 	m_tookDamage = _damaged;
 }
 
+bool Player::GetLives()
+{
+	return m_lives;
+}
 
 void Player::Kill()
 {
