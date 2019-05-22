@@ -70,7 +70,7 @@ void Rusher::SetEndPositon(sf::Vector2f _end)
 	m_endPoint = _end;
 }
 
-void Rusher::UpdateState(State _state)
+/*void Rusher::UpdateState(State _state)
 { 
 	m_currentState = _state;
 	{
@@ -115,5 +115,5 @@ void Rusher::UpdateState(State _state)
 
 		}
 	};
-}
+} */
 	 

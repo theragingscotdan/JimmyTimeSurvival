@@ -159,7 +159,7 @@ void Player::Collide(GameObject& _collider)
 			else
 			{
 				m_sprite.move((m_velocity * -0.125f));
-				m_health -= 35;
+				m_health -= 40;
 				m_tookDamage = true;
 				
 			}

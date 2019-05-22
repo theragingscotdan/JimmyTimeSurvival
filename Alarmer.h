@@ -24,7 +24,7 @@ private:
 	};
 
 	State m_state;
-	void UpdateState(State _state);
+	void UpdateState(State _state, sf::Time _time);
 	bool m_hasVision;
 	float m_timeTillTransition;
 

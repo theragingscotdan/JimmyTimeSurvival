@@ -45,8 +45,8 @@ void Shooter::Update(sf::Time _frameTime)
 	{
 		Bullet* m_bullet = new Bullet();
 		m_level->AddObject(m_bullet);
-		if (m_bullet != nullptr)
-		{
+		//if (m_bullet != nullptr)
+		//{
 			//m_bullet = new Bullet();
 			m_bullet->SetPosition(this->m_sprite.getPosition() + offset);
 			m_bullet->SetActive(true);
@@ -58,7 +58,7 @@ void Shooter::Update(sf::Time _frameTime)
 			//m_velocity
 
 			//m_level->AddObject(m_bullet);
-		}
+		//}
 		
 	}
 }
