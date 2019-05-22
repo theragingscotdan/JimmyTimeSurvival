@@ -31,7 +31,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(3);
+	LoadLevel(4);
 }
 
 
