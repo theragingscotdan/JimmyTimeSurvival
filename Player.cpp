@@ -90,6 +90,8 @@ void Player::Update(sf::Time _frameTime)
 			
 		}
 	}
+
+	
 	
 	// call the update function manually on the parent class
 	// This will actually move the character
@@ -127,7 +129,7 @@ void Player::Collide(GameObject& _collider)
 	}
 	else if (spikeCollider != nullptr)
 	{
-		m_health = 0;  // reduce the player's hp to 0 which kills them
+		LoseHealth(101);  // reduce the player's hp to 0 which kills them
 	
 	}
 	else if (fireCollider != nullptr)
@@ -138,7 +140,7 @@ void Player::Collide(GameObject& _collider)
 
 		if (fireCollider->GetCanDamage() == true)// && m_stand == true) // if the player can be damaged
 		{
-			m_health -= 5; // take damage
+			LoseHealth(5); // take damage
 			fireCollider->SetCanDamage(false); // then reset the ability to take damage
 			//m_stand = false;
 		}
@@ -159,7 +161,9 @@ void Player::Collide(GameObject& _collider)
 			else
 			{
 				m_sprite.move((m_velocity * -0.125f));
-				m_health -= 40;
+				//m_health -= 40;
+				LoseHealth(40);
+
 				m_tookDamage = true;
 				
 			}
@@ -178,7 +182,8 @@ void Player::Collide(GameObject& _collider)
 			{
 				m_sprite.move(m_velocity * -0.125f);
 				// set velocity to -1 instead
-				m_health -= 35;
+				//m_health -= 35;
+				LoseHealth(35);
 				m_tookDamage = true;
 			}
 		}
@@ -210,14 +215,8 @@ void Player::Collide(GameObject& _collider)
 		}
 
 	}
-
 	
-	if (m_health <= 0)
-	{
-		//m_lives--;
-		Kill();
-		
-	} 
+	
 
 	if (m_lives <= 0)
 	{
@@ -232,6 +231,13 @@ void Player::AddHealth(int _changeBy)
 void Player::LoseHealth(int _changeBy)
 {
 	m_health -= _changeBy;
+
+	if (m_health <= 0)
+	{
+		m_lives--;
+		Kill();
+
+	}
 }
 
 void Player::setLevel(Level* _newLevel)

@@ -34,7 +34,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(3);
+	LoadLevel(1);
 }
 
 
@@ -341,10 +341,7 @@ void Level::LoadLevel(int _levelToLoad)
 	m_drawListUI.push_back(life);	
 
 		
-	
-
-
-}
+	}
 
 
 void Level::ReloadLevel()
