@@ -28,5 +28,6 @@ private:
 	bool m_hasVision;
 	float m_timeTillTransition;
 
+	
 };
 

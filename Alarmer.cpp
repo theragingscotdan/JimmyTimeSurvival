@@ -22,17 +22,32 @@ void Alarmer::Update(sf::Time _frameTime)
 
 void Alarmer::SightTime(sf::Time _frameTime)
 {
+	m_timeTillTransition += _frameTime.asSeconds();
 	if (!m_hasVision)
 	{
-		m_timeTillTransition += _frameTime.asSeconds();
+		//m_timeTillTransition += _frameTime.asSeconds();
 
 		if (m_timeTillTransition <= 5.0f)
 		{
-			STATE_BLIND;
+			m_state = STATE_BLIND;
 		}
 		else
 		{
-			STATE_VISION;
+			m_hasVision = true;
+			m_state = STATE_VISION;
+			m_timeTillTransition = 0;
+		}
+	}
+	else
+	{
+		if (m_timeTillTransition <= 5.0f)
+		{
+			m_state = STATE_VISION;
+		}
+		else
+		{
+			m_hasVision = false;
+			m_state = STATE_BLIND;
 			m_timeTillTransition = 0;
 		}
 	}
@@ -60,33 +75,30 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)
 		case STATE_BLIND :
 
 				SightTime(_time);
-			if (m_timeTillTransition <= 5.0f)
-			{
-				STATE_BLIND;
+			
 				
-			}
-			else
-			{
-				STATE_VISION;
-				m_timeTillTransition = 0;
-				//m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
+				m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
 
-			} 
+		//	} 
 			
 			
 			break;
 
 		case STATE_VISION :
+
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
+			SightTime(_time);
 				if (m_playerseen == true)
 				{
 					//m_state(STATE_SPOTTED);
-					m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
+					//m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
 				}
 				
 				break;
 		case STATE_SPOTTED :
 			
 				// 
+			//if 
 			
 			break;
 

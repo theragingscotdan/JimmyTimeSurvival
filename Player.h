@@ -26,8 +26,10 @@ public:
 	int GetKeys();
 	void SetKeys(int _keys);
 	bool GetLives();
+	void SetCanAttack(bool _attack);
 
 protected:
+
 
 private:
 	Level* m_level;

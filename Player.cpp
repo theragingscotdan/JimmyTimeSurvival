@@ -133,7 +133,7 @@ void Player::Collide(GameObject& _collider)
 	else if (fireCollider != nullptr)
 	{
 		fireCollider->GetCanDamage(); // get the variable from Fire allowing the player to take damage
-		m_stand = true;
+		//m_stand = true;
 		m_tookDamage = true;
 
 		if (fireCollider->GetCanDamage() == true)// && m_stand == true) // if the player can be damaged
@@ -214,9 +214,10 @@ void Player::Collide(GameObject& _collider)
 	
 	if (m_health <= 0)
 	{
+		//m_lives--;
 		Kill();
-		m_lives--;
-	}
+		
+	} 
 
 	if (m_lives <= 0)
 	{
@@ -263,11 +264,18 @@ bool Player::GetLives()
 	return m_lives;
 }
 
+void Player::SetCanAttack(bool _attack)
+{
+	m_canAttack = _attack;
+}
+
 void Player::Kill()
 {
 	// reload current level
 	if (m_level != nullptr)
 		m_level->ReloadLevel();
+
+	m_lives--;
 	
 }
 

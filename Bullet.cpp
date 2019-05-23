@@ -56,6 +56,10 @@ void Bullet::Collide(GameObject& _collider)
 			
 			castPlayer->SetTookDamage(true);
 			castPlayer->LoseHealth(45);
+			//if (castPlayer->GetHealth <= 100)
+			//{
+				//castPlayer->Kill()
+			//}
 			Despawn();
 			
 		}
