@@ -6,6 +6,7 @@
 #include "Shooter.h"
 #include "ExitLvl2.h"
 #include "ExitLvl3.h"
+#include "Door.h"
 #include "Framework/AssetManager.h"
 
 #define SPEED 250.0f
@@ -113,7 +114,8 @@ void Player::Collide(GameObject& _collider)
 	Shooter* shooterCollider = dynamic_cast<Shooter*>(&_collider);
 	ExitLvl2* blockedCollider = dynamic_cast<ExitLvl2*>(&_collider);
 	ExitLvl3* deniedCollider = dynamic_cast<ExitLvl3*>(&_collider);
-	
+	Door* doorCollider = dynamic_cast<Door*>(&_collider);
+
 
 	// if it was a wall we hit, we need to move ourselves
 	//outside the wall's bounds, aka back where we were
@@ -130,7 +132,7 @@ void Player::Collide(GameObject& _collider)
 	else if (spikeCollider != nullptr)
 	{
 		LoseHealth(101);  // reduce the player's hp to 0 which kills them
-	
+
 	}
 	else if (fireCollider != nullptr)
 	{
@@ -144,8 +146,8 @@ void Player::Collide(GameObject& _collider)
 			fireCollider->SetCanDamage(false); // then reset the ability to take damage
 			//m_stand = false;
 		}
-		
-	} 
+
+	}
 
 	// TODO: Make these enemy collisions more efficient. 
 	// Possibly using a list within enemy and having an add to list somewhere in each enemy
@@ -165,10 +167,10 @@ void Player::Collide(GameObject& _collider)
 				LoseHealth(40);
 
 				m_tookDamage = true;
-				
+
 			}
 		}
-		
+
 	}
 	else if (shooterCollider != nullptr)
 	{
@@ -187,7 +189,7 @@ void Player::Collide(GameObject& _collider)
 				m_tookDamage = true;
 			}
 		}
-	} 
+	}
 	else if (blockedCollider != nullptr)
 	{
 		//if (blockedCollider)
@@ -200,7 +202,8 @@ void Player::Collide(GameObject& _collider)
 			blockedCollider->SetActive(false);
 		}
 
-	} 
+	}
+
 	else if (deniedCollider != nullptr)
 	{
 		//if (blockedCollider)
@@ -208,19 +211,33 @@ void Player::Collide(GameObject& _collider)
 		{
 			m_sprite.setPosition(m_previousPosition);
 		}
-		else 
-			
+		else
+
 		{
 			deniedCollider->SetActive(false);
 		}
 
 	}
-	
-	
 
-	if (m_lives <= 0)
+	else if (doorCollider != nullptr)
 	{
-		
+		//if (blockedCollider)
+		if (m_keys < 1)// || !hasKey)
+		{
+			m_sprite.setPosition(m_previousPosition);
+		}
+		else
+
+		{
+			doorCollider->SetActive(false);
+		}
+
+
+
+		if (m_lives <= 0)
+		{
+
+		}
 	}
 }
 void Player::AddHealth(int _changeBy)

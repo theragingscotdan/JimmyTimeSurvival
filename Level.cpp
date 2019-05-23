@@ -34,7 +34,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(1);
+	LoadLevel(3);
 }
 
 
@@ -307,7 +307,7 @@ void Level::LoadLevel(int _levelToLoad)
 		door->SetPosition(x, y);
 		m_updateList.push_back(door);
 		m_drawListWorld.push_back(door);
-		//m_collisionList.push_back(std::make_pair(blocked, player));
+		//m_collisionList.push_back(std::make_pair(door, player));
 		m_collisionList.push_back(std::make_pair(player, door));
 
 		}
