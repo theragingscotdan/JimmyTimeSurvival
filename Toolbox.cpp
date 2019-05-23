@@ -4,7 +4,7 @@
 Toolbox::Toolbox()
 	: Pickup()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/toolbox1.png"));
 }
 
 void Toolbox::OnPickup(Player& _player)

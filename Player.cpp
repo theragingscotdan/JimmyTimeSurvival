@@ -92,7 +92,10 @@ void Player::Update(sf::Time _frameTime)
 		}
 	}
 
-	
+	if (m_lives <= 0)
+	{
+
+	}
 	
 	// call the update function manually on the parent class
 	// This will actually move the character
@@ -234,10 +237,10 @@ void Player::Collide(GameObject& _collider)
 
 
 
-		if (m_lives <= 0)
+		/*if (m_lives <= 0)
 		{
 
-		}
+		} */
 	}
 }
 void Player::AddHealth(int _changeBy)
