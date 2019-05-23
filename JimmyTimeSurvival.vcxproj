@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Alarmer.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="ClockAnimation.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Exit.cpp" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="Alarmer.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="ClockAnimation.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Exit.h" />
