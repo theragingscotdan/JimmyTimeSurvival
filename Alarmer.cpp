@@ -58,10 +58,13 @@ void Alarmer::SightTime(sf::Time _frameTime)
 
 void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 {
-	playerPos = m_player->GetPosition();
-	enemyPos = this->GetPosition();
-	float distx = m_player->GetPosition().x - this->GetPosition().y; // distx can be negative.
-	float disty = m_player->GetPosition().y - this->GetPosition().y; // disty can be negative.
+	// https://www.gamedev.net/forums/topic/671131-sfml-distance-between-player-and-enemy/
+	//playerPos = m_player->GetPosition();
+	//enemyPos = this->GetPosition();
+	//float distx = m_player->GetPosition().x - this->GetPosition().y; // distx can be negative.
+	//float disty = m_player->GetPosition().y - this->GetPosition().y; // disty can be negative.
+	float distx = playerPos.x - enemyPos.y; // distx can be negative.
+	float disty = playerPos.y - enemyPos.y; // disty can be negative.
 
 	float distx2 = distx * distx; // distx2 is ALWAYS non-negative (+2 * +2 gives +4, 0 * 0 gives 0, -3 * -3 gives +9)
 	float disty2 = disty * disty; // disty2 is ALWAYS non-negative
@@ -97,6 +100,7 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)
 	//m_state = _state;
 	//sf::Time time;
 	//time = m_timeTillTransition;
+	
 	{
 		switch (m_state)
 		{
