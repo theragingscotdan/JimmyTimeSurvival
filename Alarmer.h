@@ -15,6 +15,7 @@ private:
 	sf::Vector2f m_position;
 
 	void SightTime(sf::Time _frameTime);
+	void PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos);
 
 	enum State
 	{
