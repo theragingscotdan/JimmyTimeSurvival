@@ -11,7 +11,7 @@ Shooter::Shooter()
 	, m_level(nullptr)
 	//, m_bullet(nullptr)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/shooter.png"));
 }
 
 // shooters can possibly get away with not being able to move

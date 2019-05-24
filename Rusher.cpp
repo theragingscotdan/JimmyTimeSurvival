@@ -8,7 +8,7 @@ Rusher::Rusher()
 	, m_currentState(STATE_PATROL)
 {
 	
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/buffalo.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/rusher.png"));
 	m_modifier = sf::Vector2f(300.0f, 0.0f);
 	
 	

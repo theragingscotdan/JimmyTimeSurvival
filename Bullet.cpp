@@ -25,7 +25,7 @@ void Bullet::Update(sf::Time _frameTime)
 		m_firedTime += _frameTime.asSeconds();
 		//m_bullet.
 		//m_bullet.
-				
+		// 
 		m_currentPosition += sf::Vector2f(0.0f, 0.5f);
 
 		//m_distanceTravelled += 1.0f;
