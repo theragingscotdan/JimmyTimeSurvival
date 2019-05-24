@@ -78,7 +78,7 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 
 	float distance = (abs(sqrt(((playerPos.x - enemyPos.x) * (playerPos.x - enemyPos.x)) + ((playerPos.y - enemyPos.y) * (playerPos.y - enemyPos.y)))));
 	
-	if ((distance <= 100 || dxy <= 100.0f) && m_state == STATE_VISION)
+	if ((distance <= 200 || dxy <= 200.0f) && m_state == STATE_VISION)
 	{
 		m_playerseen = true;
 	}
@@ -111,6 +111,11 @@ void Alarmer::Collide(GameObject& _collider)
 void Alarmer::SetStartPosition(sf::Vector2f _start)
 {
 	m_position = _start;
+}
+
+void Alarmer::SetPlayer(Player* _player)
+{
+	m_player = _player;
 }
 
 void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
@@ -147,13 +152,14 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 				{
 					//m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
 					m_state = STATE_SPOTTED;
-					//m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
+					
 				}
 			}
 				
 				break;
 		case STATE_SPOTTED :
-			
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
+
 				// 
 			//if 
 			

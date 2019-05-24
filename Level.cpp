@@ -34,7 +34,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(2, 0);
+	LoadLevel(3, 0);
 }
 
 
@@ -273,6 +273,7 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			Alarmer* alarm = new Alarmer();
 			alarm->SetPosition(x, y);
 			alarm->SetStartPosition(sf::Vector2f(x, y));
+			alarm->SetPlayer(player);
 			m_updateList.push_back(alarm);
 			m_drawListWorld.push_back(alarm);
 			m_collisionList.push_back(std::make_pair(alarm, player));

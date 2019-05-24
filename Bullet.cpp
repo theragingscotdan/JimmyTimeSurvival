@@ -26,16 +26,20 @@ void Bullet::Update(sf::Time _frameTime)
 		//m_bullet.
 		//m_bullet.
 		// 
-		m_currentPosition += sf::Vector2f(0.0f, 0.5f);
+		//m_currentPosition += sf::Vector2f(0.0f, 0.5f);
+		m_velocity = sf::Vector2f(0.0f, 500.0f);
 
 		//m_distanceTravelled += 1.0f;
-		if (m_firedTime >= 4.0f)
+		/*if (m_firedTime >= 4.0f)
 		{
 			m_active = false;
 		}
-		
+		*/
+		// i know the distance due to having m_sprite having position. Thus, i can use this to determine how far the bullet has travelled from the shooter
+		// then use this to despawn the bullet after a certain distance
+		//if (m_sprite.getPosition() <=)  // todo: try subtracting the initial value from the current value and compare it to a number
 		//m_newPosition;
-		m_sprite.setPosition(m_currentPosition);
+		//m_sprite.setPosition(m_currentPosition);
 		
 	}
 
