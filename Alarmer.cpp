@@ -7,14 +7,18 @@ Alarmer::Alarmer()
 	, m_state(STATE_BLIND)
 	, m_hasVision(false)
 	, m_timeTillTransition(0.0f)
+	, m_player(nullptr)
+	//, m_alarmSound()
+	, m_notSpottedTime(0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
+	//m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/"));
 
 }
 
 void Alarmer::Update(sf::Time _frameTime)
 {
-	UpdateState(m_state, _frameTime);
+	UpdateState(m_state, _frameTime);//, m_player);
 	MovingObject::Update(_frameTime);
 }
 
@@ -74,7 +78,7 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 
 	float distance = (abs(sqrt(((playerPos.x - enemyPos.x) * (playerPos.x - enemyPos.x)) + ((playerPos.y - enemyPos.y) * (playerPos.y - enemyPos.y)))));
 	
-	if (distance <= 100 && m_state == STATE_VISION)
+	if ((distance <= 100 || dxy <= 100.0f) && m_state == STATE_VISION)
 	{
 		m_playerseen = true;
 	}
@@ -82,6 +86,20 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 	//if
 	 {
 
+	}
+}
+
+void Alarmer::SeenPlayer(sf::Time _frametime)
+{
+	if (m_playerseen)
+	{
+		m_notSpottedTime += _frametime.asSeconds();
+
+		if (m_notSpottedTime >= 5.0f)
+		{
+			m_notSpottedTime = 0.0f;
+			m_state = STATE_VISION;
+		}
 	}
 }
 
@@ -95,12 +113,12 @@ void Alarmer::SetStartPosition(sf::Vector2f _start)
 	m_position = _start;
 }
 
-void Alarmer::UpdateState(State m_state, sf::Time _time)
+void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 {
 	//m_state = _state;
 	//sf::Time time;
 	//time = m_timeTillTransition;
-	
+	//m_player = _player;
 	{
 		switch (m_state)
 		{
@@ -144,6 +162,13 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)
 		case STATE_ALERT :
 
 					// alert all nearby enemies
+			SeenPlayer(_time);
+			//m_alarmSound.play();
+			//m_
+			//if (!m_playerseen)
+			//{
+				
+			//}
 					break;
 			
 				default: STATE_BLIND;

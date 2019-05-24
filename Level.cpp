@@ -34,7 +34,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(1);
+	LoadLevel(3, 0);
 }
 
 
@@ -67,6 +67,7 @@ void Level::Draw(sf::RenderTarget& _target)
 
 void Level::Update(sf::Time _frameTime)
 {
+
 	// Update all game objects
 	for (int i = 0; i < m_updateList.size(); ++i)
 	{
@@ -92,14 +93,18 @@ void Level::Update(sf::Time _frameTime)
 	if (m_pendingLevel != 0)
 	{
 		// load it
-		LoadLevel(m_pendingLevel);
+		LoadLevel(m_pendingLevel, _frameTime.asMilliseconds());
 		// remove pending level
 		m_pendingLevel = 0;
 	}
 }
 
-void Level::LoadLevel(int _levelToLoad)
+void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 {
+	
+	std::cout << "LoadLevel at time = " << _totalMilliseconds;
+
+
 	int currentHealth = 0;
 	// TODO: Clean up level/old level
 	if (m_player != nullptr)
@@ -110,7 +115,9 @@ void Level::LoadLevel(int _levelToLoad)
 	// delete any data already in the level
 	for (int i = 0; i < m_updateList.size(); ++i)
 	{
+
 		delete m_updateList[i];
+
 	}
 
 	// clear out our lists
@@ -293,22 +300,22 @@ void Level::LoadLevel(int _levelToLoad)
 		}
 		else if (ch == 'L')
 		{
-		ExitLvl3* denied = new ExitLvl3();
-		denied->SetPosition(x, y);
-		m_updateList.push_back(denied);
-		m_drawListWorld.push_back(denied);
-		//m_collisionList.push_back(std::make_pair(blocked, player));
-		m_collisionList.push_back(std::make_pair(player, denied));
+			ExitLvl3* denied = new ExitLvl3();
+			denied->SetPosition(x, y);
+			m_updateList.push_back(denied);
+			m_drawListWorld.push_back(denied);
+			//m_collisionList.push_back(std::make_pair(blocked, player));
+			m_collisionList.push_back(std::make_pair(player, denied));
 
 		}
 		else if (ch == 'D')
 		{
-		Door* door = new Door();
-		door->SetPosition(x, y);
-		m_updateList.push_back(door);
-		m_drawListWorld.push_back(door);
-		//m_collisionList.push_back(std::make_pair(door, player));
-		m_collisionList.push_back(std::make_pair(player, door));
+			Door* door = new Door();
+			door->SetPosition(x, y);
+			m_updateList.push_back(door);
+			m_drawListWorld.push_back(door);
+			//m_collisionList.push_back(std::make_pair(door, player));
+			m_collisionList.push_back(std::make_pair(player, door));
 
 		}
 
@@ -347,13 +354,13 @@ void Level::LoadLevel(int _levelToLoad)
 void Level::ReloadLevel()
 {
 	m_pendingLevel = m_currentLevel;
-	LoadLevel(m_pendingLevel);
+	//LoadLevel(m_pendingLevel);
 }
 
 void Level::LoadNextLevel()
 {
 	m_pendingLevel = m_currentLevel + 1;
-	LoadLevel(m_pendingLevel);
+	//LoadLevel(m_pendingLevel);
 }
 
 int Level::GetLevel()

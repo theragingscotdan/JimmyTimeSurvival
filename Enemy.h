@@ -19,7 +19,7 @@ public:
 	sf::Vector2f DistanceFromPlayer(sf::Vector2f);
 
 protected:
-	Player* m_player;
+	//Player* m_player;
 	bool m_dead;
 	bool m_playerseen;
 	float m_secondsPassed;

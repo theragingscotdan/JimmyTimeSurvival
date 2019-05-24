@@ -16,6 +16,7 @@ private:
 
 	void SightTime(sf::Time _frameTime);
 	void PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos);
+	void SeenPlayer(sf::Time _frametime);
 
 	enum State
 	{
@@ -26,11 +27,14 @@ private:
 	};
 
 	State m_state;
-	void UpdateState(State _state, sf::Time _time);
+	void UpdateState(State _state, sf::Time _time);//, Player* _player);
 
 	bool m_hasVision;
 	float m_timeTillTransition;
-
+	Player* m_player;
+	//sf::Sound m_alarmSound;
+	float m_notSpottedTime;
+	
 	
 };
 

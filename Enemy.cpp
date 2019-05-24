@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 	:MovingObject()
-	, m_player(nullptr)
+	//, m_player(nullptr)
 	, m_dead(false)
 	, m_playerseen(false)
 	, m_secondsPassed(0.0f)

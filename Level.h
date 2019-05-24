@@ -17,7 +17,7 @@ public:
 	void Draw(sf::RenderTarget& _target);
 	void Update(sf::Time _frameTime);
 
-	void LoadLevel(int _levelToLoad);
+	void LoadLevel(int _levelToLoad, int _totalMilliseconds);
 	void ReloadLevel();
 	void LoadNextLevel();
 	int GetLevel();
