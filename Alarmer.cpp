@@ -87,15 +87,16 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 		m_playerSeen = true;
 		m_state = STATE_SPOTTED;
 	}
-	else
+	else if ((distance >= 200 || dxy >= 200.0f) && m_state == STATE_VISION)
 	{
 		m_playerSeen = false;
 		//m_state = STATE_VISION;
 	}
-	//if
+	else  if ((distance >= 200 || dxy >= 200.0f) && m_state == STATE_ALERT)
 	 {
-
-	}
+		 // the alarmer can no longer see the player and so revert back to a different state
+		m_state = STATE_VISION;
+	 }
 }
 
 void Alarmer::SeenPlayer(sf::Time _frametime)
@@ -184,8 +185,9 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 
 		case STATE_ALERT :
 
-					
+			PlayerLocation(m_player->GetPosition(), this->GetPosition());
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
+			
 				// alert all nearby enemies
 			//SeenPlayer(_time);
 			//m_alarmSound.play();
