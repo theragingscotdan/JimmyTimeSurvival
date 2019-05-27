@@ -114,6 +114,9 @@
     <ClCompile Include="ClockAnimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tutorial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -204,6 +207,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ClockAnimation.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tutorial.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

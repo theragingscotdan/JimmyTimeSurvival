@@ -18,6 +18,7 @@
 #include "Door.h"
 #include "KeyText.h"
 #include "Lives.h"
+#include "Tutorial.h"
 
 // library includes
 #include <iostream>
@@ -319,7 +320,14 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			m_collisionList.push_back(std::make_pair(player, door));
 
 		}
-
+		else if (ch == '?')
+		{
+			Tutorial* tut = new Tutorial();
+			tut->SetPosition(x, y);
+			m_updateList.push_back(tut);
+			m_drawListWorld.push_back(tut);
+		
+		}
 		else if (ch == '-')
 		{
 			// do no - empty space

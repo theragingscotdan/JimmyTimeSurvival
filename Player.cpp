@@ -329,7 +329,11 @@ void Player::AttemptAttack()
 		m_attack = true;
 	}
 	else
+	{
 		m_attack = false;
+		
+	}
+
 }
 
 void Player::AdvanceLevel()
