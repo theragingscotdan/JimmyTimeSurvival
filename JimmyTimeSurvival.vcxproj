@@ -162,6 +162,7 @@
     <ClCompile Include="Spikes.cpp" />
     <ClCompile Include="Toolbox.cpp" />
     <ClCompile Include="Tutorial.cpp" />
+    <ClCompile Include="Tutorial2.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,7 @@
     <ClInclude Include="Spikes.h" />
     <ClInclude Include="Toolbox.h" />
     <ClInclude Include="Tutorial.h" />
+    <ClInclude Include="Tutorial2.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -19,6 +19,7 @@
 #include "KeyText.h"
 #include "Lives.h"
 #include "Tutorial.h"
+#include "Tutorial2.h"
 
 // library includes
 #include <iostream>
@@ -327,6 +328,14 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			m_updateList.push_back(tut);
 			m_drawListWorld.push_back(tut);
 		
+		}
+		else if (ch == '2')
+		{
+		Tutorial2* tut2 = new Tutorial2();
+		tut2->SetPosition(x, y);
+		m_updateList.push_back(tut2);
+		m_drawListWorld.push_back(tut2);
+
 		}
 		else if (ch == '-')
 		{

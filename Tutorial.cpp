@@ -4,5 +4,5 @@
 Tutorial::Tutorial()
 	: SpriteObject()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/tutorial1.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/tutorialLvl1.png"));
 }
