@@ -11,17 +11,21 @@ Bullet::Bullet()
 	, m_bulletSpawn(0.0f, 0.0f)
 	, m_firedTime(0.0f)
 	, m_distanceTravelled(0.0f)
+	, m_initialPosition(0.0f, 0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/bullet.png"));
+	//sf::Vector2f m_initialPosition = m_sprite.getPosition();
+
 }
 
 void Bullet::Update(sf::Time _frameTime)
 {
 	//sf::Vector2f m_currentPosition;
-	sf::Vector2f m_currentPosition = m_sprite.getPosition();
+	//sf::Vector2f m_initialPosition = m_sprite.getPosition();
 	//if ()
 	if (m_active)
 	{
+		//sf::Vector2f m_initialPosition = m_sprite.getPosition();
 		m_firedTime += _frameTime.asSeconds();
 		//m_bullet.
 		//m_bullet.
@@ -37,7 +41,11 @@ void Bullet::Update(sf::Time _frameTime)
 		*/
 		// i know the distance due to having m_sprite having position. Thus, i can use this to determine how far the bullet has travelled from the shooter
 		// then use this to despawn the bullet after a certain distance
-		//if (m_sprite.getPosition() <=)  // todo: try subtracting the initial value from the current value and compare it to a number
+		if (m_initialPosition.y - m_sprite.getPosition().y >= 100.0f)
+		{
+			Despawn();
+		}
+		// todo: try subtracting the initial value from the current value and compare it to a number
 		//m_newPosition;
 		//m_sprite.setPosition(m_currentPosition);
 		
@@ -83,9 +91,9 @@ void Bullet::SetActive(bool _active)
 	m_active = _active;
 }
 
-void Bullet::SetStartPosition(sf::Vector2f _start)
+void Bullet::SetInitialPosition(sf::Vector2f _start)
 {
-	//m_currentPosition = _start;
+	m_initialPosition = _start;
 }
 
 void Bullet::Despawn()

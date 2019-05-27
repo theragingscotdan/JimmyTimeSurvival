@@ -34,7 +34,7 @@ private:
 	float m_timeTillTransition;
 	Player* m_player;
 	//sf::Sound m_alarmSound;
-	float m_notSpottedTime;
+	float m_SpottedTime;
 	
 	
 };

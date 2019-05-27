@@ -9,7 +9,7 @@ Alarmer::Alarmer()
 	, m_timeTillTransition(0.0f)
 	, m_player(nullptr)
 	//, m_alarmSound()
-	, m_notSpottedTime(0.0f)
+	, m_SpottedTime(0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
 	//m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/"));
@@ -26,37 +26,41 @@ void Alarmer::Update(sf::Time _frameTime)
 
 void Alarmer::SightTime(sf::Time _frameTime)
 {
-	m_timeTillTransition += _frameTime.asSeconds();
-	if (!m_hasVision)
-	{
-		//m_timeTillTransition += _frameTime.asSeconds();
-
-		if (m_timeTillTransition <= 5.0f)
+	
+	//if (!m_playerSeen)
+	//{
+		m_timeTillTransition += _frameTime.asSeconds();
+		if (!m_hasVision)
 		{
-			m_state = STATE_BLIND;
+			//m_timeTillTransition += _frameTime.asSeconds();
+
+			if (m_timeTillTransition <= 10.0f)
+			{
+				m_state = STATE_BLIND;
+			}
+			else
+			{
+				m_hasVision = true;
+				m_state = STATE_VISION;
+				m_timeTillTransition = 0;
+
+
+			}
 		}
 		else
 		{
-			m_hasVision = true;
-			m_state = STATE_VISION;
-			m_timeTillTransition = 0;
-
-			
+			if (m_timeTillTransition <= 5.0f)
+			{
+				m_state = STATE_VISION;
+			}
+			else
+			{
+				m_hasVision = false;
+				m_state = STATE_BLIND;
+				m_timeTillTransition = 0;
+			}
 		}
-	}
-	else
-	{
-		if (m_timeTillTransition <= 5.0f)
-		{
-			m_state = STATE_VISION;
-		}
-		else
-		{
-			m_hasVision = false;
-			m_state = STATE_BLIND;
-			m_timeTillTransition = 0;
-		}
-	}
+	//}
 	
 }
 
@@ -80,9 +84,14 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 	
 	if ((distance <= 200 || dxy <= 200.0f) && m_state == STATE_VISION)
 	{
-		m_playerseen = true;
+		m_playerSeen = true;
+		m_state = STATE_SPOTTED;
 	}
-	
+	else
+	{
+		m_playerSeen = false;
+		//m_state = STATE_VISION;
+	}
 	//if
 	 {
 
@@ -91,16 +100,22 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 
 void Alarmer::SeenPlayer(sf::Time _frametime)
 {
-	if (m_playerseen)
+	if (m_playerSeen)
 	{
-		m_notSpottedTime += _frametime.asSeconds();
+		m_SpottedTime += _frametime.asSeconds();
 
-		if (m_notSpottedTime >= 5.0f)
+		if (m_SpottedTime >= 2.0f)
 		{
-			m_notSpottedTime = 0.0f;
-			m_state = STATE_VISION;
+			m_SpottedTime = 0.0f;
+			m_state = STATE_ALERT;
 		}
+		//else if (m_SpottedTime <= 0)
 	}
+	//else if (!m_playerSeen)
+	//{
+	//	m_state = STATE_VISION;
+	//}
+	
 }
 
 void Alarmer::Collide(GameObject& _collider)
@@ -148,27 +163,31 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 				PlayerLocation(m_player->GetPosition(), this->GetPosition());
 
 				//if (m_player->GetPosition();
-				if (m_playerseen == true)
-				{
+				//if (m_playerSeen == true)
+				//{
 					//m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
-					m_state = STATE_SPOTTED;
+					//m_state = STATE_SPOTTED;
 					
-				}
+				//}
 			}
 				
 				break;
+
 		case STATE_SPOTTED :
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
 
 				// 
 			//if 
-			
+			SeenPlayer(_time);
+
 			break;
 
 		case STATE_ALERT :
 
-					// alert all nearby enemies
-			SeenPlayer(_time);
+					
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
+				// alert all nearby enemies
+			//SeenPlayer(_time);
 			//m_alarmSound.play();
 			//m_
 			//if (!m_playerseen)

@@ -49,7 +49,9 @@ void Shooter::Update(sf::Time _frameTime)
 		//{
 			//m_bullet = new Bullet();
 			m_bullet->SetPosition(this->m_sprite.getPosition() + offset);
+			m_bullet->SetInitialPosition((this)->m_sprite.getPosition());
 			m_bullet->SetActive(true);
+			//m_bullet->SetInitialPosition((this)->m_sprite.getPosition());
 			//m_bullet->SetStartPosition();
 			// add the bullet movement code here. 
 			// look up c# from year 1

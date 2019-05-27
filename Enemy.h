@@ -21,7 +21,7 @@ public:
 protected:
 	//Player* m_player;
 	bool m_dead;
-	bool m_playerseen;
+	bool m_playerSeen;
 	float m_secondsPassed;
 	float m_duration;
 	sf::Vector2f m_modifier;
