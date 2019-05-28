@@ -40,6 +40,7 @@ void Alarmer::SightTime(sf::Time _frameTime)
 			}
 			else
 			{
+				/
 				m_hasVision = true;
 				m_state = STATE_VISION;
 				m_timeTillTransition = 0;
@@ -67,8 +68,6 @@ void Alarmer::SightTime(sf::Time _frameTime)
 void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 {
 	// https://www.gamedev.net/forums/topic/671131-sfml-distance-between-player-and-enemy/
-	//playerPos = m_player->GetPosition();
-	//enemyPos = this->GetPosition();
 	//float distx = m_player->GetPosition().x - this->GetPosition().y; // distx can be negative.
 	//float disty = m_player->GetPosition().y - this->GetPosition().y; // disty can be negative.
 	/*float distx = playerPos.x - enemyPos.y; // distx can be negative.
@@ -114,11 +113,12 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 
 void Alarmer::SeenPlayer(sf::Time _frametime)
 {
-	if (m_playerSeen)
+	if (m_playerSeen) // if the player is seen
 	{
-		m_SpottedTime += _frametime.asSeconds();
+		m_SpottedTime += _frametime.asSeconds(); // add 1 second every frame
 
-		if (m_SpottedTime >= 2.0f)
+		// if 2 seconds have passed reset the timer and switch to alert state 
+		if (m_SpottedTime >= 2.0f) 
 		{
 			m_SpottedTime = 0.0f;
 			m_state = STATE_ALERT;
