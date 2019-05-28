@@ -7,7 +7,7 @@ Fire::Fire()
 	, m_player(nullptr)
 	, m_canDamage(false)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/firePlaceHold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/fire.png"));
 }
 
 void Fire::Update(sf::Time _frameTime)
