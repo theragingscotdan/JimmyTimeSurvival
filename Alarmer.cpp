@@ -34,7 +34,7 @@ void Alarmer::SightTime(sf::Time _frameTime)
 		{
 			//m_timeTillTransition += _frameTime.asSeconds();
 
-			if (m_timeTillTransition <= 10.0f)
+			if (m_timeTillTransition <= 8.0f)
 			{
 				m_state = STATE_BLIND;
 			}
@@ -71,14 +71,14 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 	//enemyPos = this->GetPosition();
 	//float distx = m_player->GetPosition().x - this->GetPosition().y; // distx can be negative.
 	//float disty = m_player->GetPosition().y - this->GetPosition().y; // disty can be negative.
-	float distx = playerPos.x - enemyPos.y; // distx can be negative.
+	/*float distx = playerPos.x - enemyPos.y; // distx can be negative.
 	float disty = playerPos.y - enemyPos.y; // disty can be negative.
 
 	float distx2 = distx * distx; // distx2 is ALWAYS non-negative (+2 * +2 gives +4, 0 * 0 gives 0, -3 * -3 gives +9)
 	float disty2 = disty * disty; // disty2 is ALWAYS non-negative
 
 	float dxy2 = distx2 + disty2; // dxy2 is ALWAYS non-negative
-	float dxy = sqrt(dxy2);
+	float dxy = sqrt(dxy2); */
 
 	float distance = (abs(sqrt(((playerPos.x - enemyPos.x) * (playerPos.x - enemyPos.x)) + ((playerPos.y - enemyPos.y) * (playerPos.y - enemyPos.y)))));
 

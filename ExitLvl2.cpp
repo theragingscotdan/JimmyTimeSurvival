@@ -4,7 +4,7 @@
 ExitLvl2::ExitLvl2()
 	: Exit()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/OutofOrder.png"));
 	
 }
 

@@ -304,6 +304,7 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 		{
 			ExitLvl3* denied = new ExitLvl3();
 			denied->SetPosition(x, y);
+			denied->SetPlayer(player);
 			m_updateList.push_back(denied);
 			m_drawListWorld.push_back(denied);
 			//m_collisionList.push_back(std::make_pair(blocked, player));
