@@ -20,8 +20,10 @@ private:
 	void PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos);
 	void SeenPlayer(sf::Time _frametime);
 
+	// enum used to create the finite state machine
 	enum State
 	{
+		// these are the 4 states
 		STATE_BLIND,
 		STATE_VISION,
 		STATE_SPOTTED,
@@ -29,7 +31,7 @@ private:
 	};
 
 	State m_state;
-	void UpdateState(State _state, sf::Time _time);//, Player* _player);
+	void UpdateState(State _state, sf::Time _time);
 
 	bool m_hasVision;
 	float m_timeTillTransition;

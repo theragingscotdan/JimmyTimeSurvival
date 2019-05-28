@@ -27,11 +27,13 @@ Player::Player()
 	, m_keys(0)
 	, m_attackSound()
 	, m_destroyed()
+	, m_open()
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
 	m_attackSound.setBuffer(AssetManager::GetSoundBuffer("audio/PlayerAttack.wav"));
 	m_destroyed.setBuffer(AssetManager::GetSoundBuffer("audio/EnemyDestroyed.wav"));
+	m_open.setBuffer(AssetManager::GetSoundBuffer("audio/DoorOpen.wav"));
 	
 }
 
@@ -219,6 +221,7 @@ void Player::Collide(GameObject& _collider)
 		else
 
 		{
+			m_open.play();
 			deniedCollider->SetActive(false);
 		}
 
@@ -235,6 +238,7 @@ void Player::Collide(GameObject& _collider)
 
 		{
 			doorCollider->SetActive(false);
+			m_open.play();
 		}
 
 

@@ -180,13 +180,6 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 				// of the alarmer
 				PlayerLocation(m_player->GetPosition(), this->GetPosition()); 
 
-				//if (m_player->GetPosition();
-				//if (m_playerSeen == true)
-				//{
-					//m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
-					//m_state = STATE_SPOTTED;
-					
-				//}
 			}
 				
 				break;
@@ -214,11 +207,8 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 			// alert all nearby enemies
 			//SeenPlayer(_time);
 			m_alarmSound.play();
-			//m_
-			//if (!m_playerseen)
-			//{
-				
-			//}
+			//m_playingSound = true;
+			
 					break;
 			
 				default: STATE_BLIND; // the default state is set to blind

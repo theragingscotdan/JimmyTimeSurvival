@@ -12,10 +12,13 @@ void ExitLvl3::Update(sf::Time _frameTime)
 {
 	if (m_player != nullptr)
 	{
+		// get the number of keys from player. if the number of keys is less than or equal
+		// to 2 keys, swap the sprite
 		int haveKey = m_player->GetKeys();
 		if (haveKey >= 2)
 		{
 			//m_active = false;
+			// swap the sprite to access granted
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/acessgranted.png"));
 		}
 	}

@@ -20,7 +20,7 @@ public:
 	sf::Vector2f m_position;
 	bool m_charge;
 	
-
+	
 	enum State
 	{
 		STATE_PATROL,

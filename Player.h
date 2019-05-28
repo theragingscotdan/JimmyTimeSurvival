@@ -43,6 +43,8 @@ private:
 	bool hasToolbox;
 	sf::Sound m_attackSound;
 	sf::Sound m_destroyed;
+	sf::Sound m_burning;
+	sf::Sound m_open;
 	sf::Vector2f m_oldPosition;
 	int m_currentHP;
 	int m_keys;
