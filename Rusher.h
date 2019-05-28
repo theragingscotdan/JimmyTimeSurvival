@@ -20,18 +20,5 @@ public:
 	sf::Vector2f m_position;
 	bool m_charge;
 	
-	
-	enum State
-	{
-		STATE_PATROL,
-		STATE_ATTACK,
-		STATE_CHARGE,
-		STATE_STUNNED,
-		STATE_RETURN
 
-	};
-
-	State m_currentState;
-
-	void UpdateState(State _State);
 };

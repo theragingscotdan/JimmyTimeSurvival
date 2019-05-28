@@ -40,7 +40,7 @@ void Alarmer::SightTime(sf::Time _frameTime)
 			}
 			else
 			{
-				/
+				// set has vision to true, change state to vision and timeTillTransition to 0
 				m_hasVision = true;
 				m_state = STATE_VISION;
 				m_timeTillTransition = 0;

@@ -57,17 +57,18 @@ void Bullet::Update(sf::Time _frameTime)
 
 void Bullet::Collide(GameObject& _collider)
 {
+	// dynamic cast to the player
 	Player* castPlayer = dynamic_cast <Player*>(&_collider);
 	Wall* castWall = dynamic_cast<Wall*>(&_collider);
 	if (m_active)
 	{
 		
-
+	// if the player is not nullptr
 		if (castPlayer != nullptr)
 		{
-			// then delete itself
-			
-			castPlayer->SetTookDamage(true);
+			// set took damage to true, player loses 45 hp
+			// then the bullet will delete itself
+			 castPlayer->SetTookDamage(true);
 			castPlayer->LoseHealth(45);
 			//if (castPlayer->GetHealth <= 100)
 			//{

@@ -5,10 +5,11 @@ Rusher::Rusher()
 	:Enemy()
 	, m_charge(false)
 	, m_position(0.0f, 0.0f)
-	, m_currentState(STATE_PATROL)
 {
 	
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/rusher.png"));
+
+	// this modifier will be used to set the end point below
 	m_modifier = sf::Vector2f(300.0f, 0.0f);
 	
 	
@@ -20,18 +21,22 @@ void Rusher::Update(sf::Time _frameTime)
 	//m_player-> 
 	m_secondsPassed += _frameTime.asSeconds();
 
+	// using Quadratic Interpolation to move the rusher
 	m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
 	
 
-	//m_endPoint = m_startPoint - sf::Vector2f(300.0f, 0.0f);
+	// in order to get the end point, subtract the start point from the modifier
 	m_endPoint = m_startPoint - m_modifier;
-		//- m_modifier;
-	
+		
+	// 
 
 	if (m_secondsPassed >= m_duration)
 	{
+		// reset seconds passed to 0
 		m_secondsPassed = 0;
 
+		// switch the start and end point and multiply the modifier by -1.0f to 
+		// reverse the direction and correctly set the end point
 		sf::Vector2f oldStart = m_startPoint;
 		sf::Vector2f oldEnd = m_endPoint;
 		m_modifier = (m_modifier * -1.0f);
@@ -70,50 +75,5 @@ void Rusher::SetEndPositon(sf::Vector2f _end)
 	m_endPoint = _end;
 }
 
-/*void Rusher::UpdateState(State _state)
-{ 
-	m_currentState = _state;
-	{
-		switch (m_currentState)
-		{
-		case STATE_PATROL :
-		
-			// run the current patrol code currently located in update
-				//m_position = QuadEaseOut(m_secondsPassed, m_duration, m_startPoint, m_endPoint);
-				//break;
-				//if (DistanceFromPlayer <= sf::Vector2f(200.0f, 200.0f))
-				
-					//m_currentState(STATE_ATTACK);
-			
-				break;
-			case STATE_ATTACK :
-			
-				//if (m_player
-				//break;
-			
-				break;
-			case STATE_CHARGE :
-			
-				// charge towards the player
-				m_charge = true;
-				break;
-			
-				//break;
-			case STATE_STUNNED :
-			
-				break;
-			
-				//break;
-			case STATE_RETURN :
-			
-				break;
-			
-				//break;
 
-
-
-
-		}
-	};
-} */
 	 
