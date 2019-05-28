@@ -25,7 +25,6 @@ public:
 	bool GetToolkit();
 	int GetKeys();
 	void SetKeys(int _keys);
-	bool GetLives();
 	void SetCanAttack(bool _attack);
 
 protected:
@@ -41,7 +40,6 @@ private:
 	float m_timeSinceDamage;
 	bool m_canAttack;
 	bool hasToolbox;
-	int m_lives;
 	sf::Vector2f m_oldPosition;
 	int m_currentHP;
 	int m_keys;

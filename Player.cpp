@@ -23,7 +23,6 @@ Player::Player()
 	, m_timeSinceDamage(0.0f)
 	, m_canAttack(true)
 	, hasToolbox(false)
-	, m_lives(3)
 	, m_oldPosition(0.0f, 0.0f)
 	, m_currentHP(100)
 	, m_keys(0)
@@ -92,11 +91,6 @@ void Player::Update(sf::Time _frameTime)
 		}
 	}
 
-	if (m_lives <= 0)
-	{
-
-	}
-	
 	// call the update function manually on the parent class
 	// This will actually move the character
 
@@ -254,7 +248,6 @@ void Player::LoseHealth(int _changeBy)
 
 	if (m_health <= 0)
 	{
-		m_lives--;
 		Kill();
 
 	}
@@ -285,11 +278,6 @@ void Player::SetTookDamage(bool _damaged)
 	m_tookDamage = _damaged;
 }
 
-bool Player::GetLives()
-{
-	return m_lives;
-}
-
 void Player::SetCanAttack(bool _attack)
 {
 	m_canAttack = _attack;
@@ -300,8 +288,6 @@ void Player::Kill()
 	// reload current level
 	if (m_level != nullptr)
 		m_level->ReloadLevel();
-
-	m_lives--;
 	
 }
 

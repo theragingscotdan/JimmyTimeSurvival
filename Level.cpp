@@ -17,7 +17,6 @@
 #include "Bullet.h"
 #include "Door.h"
 #include "KeyText.h"
-#include "Lives.h"
 #include "Tutorial.h"
 #include "Tutorial2.h"
 
@@ -36,7 +35,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(3, 0);
+	LoadLevel(1, 0);
 }
 
 
@@ -360,12 +359,7 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 	m_updateList.push_back(key);
 	m_drawListUI.push_back(key);
 
-	Lives* life = new Lives();
-	life->SetPlayer(player);
-	m_updateList.push_back(life);
-	m_drawListUI.push_back(life);	
-
-		
+			
 	}
 
 
