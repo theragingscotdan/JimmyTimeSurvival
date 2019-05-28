@@ -28,7 +28,7 @@ Player::Player()
 	, m_keys(0)
 	
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand1.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
 }
 
 void Player::Update(sf::Time _frameTime)
@@ -77,13 +77,13 @@ void Player::Update(sf::Time _frameTime)
 		if (m_timeSinceDamage <= 3.0f)
 		{
 			m_canAttack = false;
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/playerPlaceHold/playerStandDown"));
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyHurt.png"));
 			
 		}
 		else
 		{
 			m_canAttack = true;
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand1.png"));
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
 			m_tookDamage = false;
 			m_timeSinceDamage = 0.0f;
 			
@@ -313,11 +313,13 @@ void Player::AttemptAttack()
 	if (m_canAttack)
 	{
 		m_attack = true;
+		//m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyAttack.png"));
+
 	}
 	else
 	{
 		m_attack = false;
-		
+		//m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
 	}
 
 }
