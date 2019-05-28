@@ -99,6 +99,10 @@ void Player::Update(sf::Time _frameTime)
 		}
 	}
 
+	if (m_playing)
+	{
+		//m_attackSound.;
+	}
 	// call the update function manually on the parent class
 	// This will actually move the character
 
@@ -327,6 +331,7 @@ void Player::AttemptAttack()
 		m_attack = true;
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyAttack.png"));
 		m_attackSound.play();
+		m_playing = true;
 
 	}
 	else

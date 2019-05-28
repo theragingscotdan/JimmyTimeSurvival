@@ -48,6 +48,7 @@ private:
 	sf::Vector2f m_oldPosition;
 	int m_currentHP;
 	int m_keys;
+	bool m_playing;
 	
 
 
