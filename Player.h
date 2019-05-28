@@ -2,6 +2,7 @@
 
 #include "MovingObject.h"
 #include "Level.h"
+#include <SFML/Audio.hpp>
 
 class Player : public MovingObject
 {
@@ -40,12 +41,13 @@ private:
 	float m_timeSinceDamage;
 	bool m_canAttack;
 	bool hasToolbox;
+	sf::Sound m_attackSound;
+	sf::Sound m_destroyed;
 	sf::Vector2f m_oldPosition;
 	int m_currentHP;
 	int m_keys;
 	
 
-	//bool AttemptBack(sf::Vector2f _direction);
 
 	void Kill();
 

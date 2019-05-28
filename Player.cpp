@@ -10,7 +10,6 @@
 #include "Framework/AssetManager.h"
 
 #define SPEED 250.0f
-//#define MAXLIVES 3;
 
 Player::Player()
 	: MovingObject()
@@ -26,9 +25,14 @@ Player::Player()
 	, m_oldPosition(0.0f, 0.0f)
 	, m_currentHP(100)
 	, m_keys(0)
+	, m_attackSound()
+	, m_destroyed()
 	
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
+	m_attackSound.setBuffer(AssetManager::GetSoundBuffer("audio/PlayerAttack.wav"));
+	m_destroyed.setBuffer(AssetManager::GetSoundBuffer("audio/EnemyDestroyed.wav"));
+	
 }
 
 void Player::Update(sf::Time _frameTime)
@@ -67,6 +71,8 @@ void Player::Update(sf::Time _frameTime)
 	else
 	{
  		m_attack = false;
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
+
 	}
 
 	
@@ -156,6 +162,7 @@ void Player::Collide(GameObject& _collider)
 			if (m_attack == true)
 			{
 				rusherCollider->SetActive(false);
+				m_destroyed.play();
 			}
 			else
 			{
@@ -176,6 +183,7 @@ void Player::Collide(GameObject& _collider)
 			if (m_attack == true)
 			{
 				shooterCollider->SetActive(false);
+				m_destroyed.play();
 			}
 			else
 			{
@@ -313,7 +321,8 @@ void Player::AttemptAttack()
 	if (m_canAttack)
 	{
 		m_attack = true;
-		//m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyAttack.png"));
+		m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyAttack.png"));
+		m_attackSound.play();
 
 	}
 	else

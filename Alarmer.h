@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enemy.h"
+#include <SFML/Audio.hpp>
 
 class Alarmer : public Enemy
 {
@@ -33,7 +34,7 @@ private:
 	bool m_hasVision;
 	float m_timeTillTransition;
 	Player* m_player;
-	//sf::Sound m_alarmSound;
+	sf::Sound m_alarmSound;
 	float m_SpottedTime;
 	
 	

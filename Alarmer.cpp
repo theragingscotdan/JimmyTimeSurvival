@@ -8,11 +8,11 @@ Alarmer::Alarmer()
 	, m_hasVision(false)
 	, m_timeTillTransition(0.0f)
 	, m_player(nullptr)
-	//, m_alarmSound()
+	, m_alarmSound()
 	, m_SpottedTime(0.0f)
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
-	//m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/"));
+	m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/AlarmerAlert.wav"));
 
 }
 
@@ -80,6 +80,7 @@ void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 	float dxy2 = distx2 + disty2; // dxy2 is ALWAYS non-negative
 	float dxy = sqrt(dxy2); */
 
+	// work out the magnitude between the player and the alarmer
 	float distance = (abs(sqrt(((playerPos.x - enemyPos.x) * (playerPos.x - enemyPos.x)) + ((playerPos.y - enemyPos.y) * (playerPos.y - enemyPos.y)))));
 
 	if (m_state == STATE_VISION)
@@ -150,16 +151,14 @@ void Alarmer::SetPlayer(Player* _player)
 
 void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 {
-	//m_state = _state;
-	//sf::Time time;
-	//time = m_timeTillTransition;
-	//m_player = _player;
+	// this is a finite state machine which controls the AI for the Alarmer
+	// it uses an Enum for each individual state 
 	{
 		switch (m_state)
 		{
-		case STATE_BLIND :
+		case STATE_BLIND : // if the current state is blind
 
-				SightTime(_time);
+				SightTime(_time); // run the SightTime function and pass in _time
 			
 				
 				m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
@@ -169,13 +168,17 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 			
 			break;
 
-		case STATE_VISION :
+			// during the vision state, the alarmer can see the player and will swap states
+			// if it sees the player
+		case STATE_VISION : // if the current state is vision
 
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit"));
 			SightTime(_time);
 			if (m_player != nullptr)
 			{
-				PlayerLocation(m_player->GetPosition(), this->GetPosition());
+				// run PlayerLocation() passing in the player's position and the position
+				// of the alarmer
+				PlayerLocation(m_player->GetPosition(), this->GetPosition()); 
 
 				//if (m_player->GetPosition();
 				//if (m_playerSeen == true)
@@ -188,6 +191,7 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 				
 				break;
 
+				// this is a transitional state 
 		case STATE_SPOTTED :
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/toolkit.png"));
 
@@ -197,16 +201,19 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 
 			break;
 
+			// the alarmer has noticed the player due to them staying near for too long
+			// and this is alerting.
 		case STATE_ALERT :
 
 			PlayerLocation(m_player->GetPosition(), this->GetPosition());
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
 			
+			// disable the player's ability to attack
 			m_player->SetCanAttack(false);
 			
 			// alert all nearby enemies
 			//SeenPlayer(_time);
-			//m_alarmSound.play();
+			m_alarmSound.play();
 			//m_
 			//if (!m_playerseen)
 			//{
@@ -214,7 +221,7 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 			//}
 					break;
 			
-				default: STATE_BLIND;
+				default: STATE_BLIND; // the default state is set to blind
 					break;
 		}
 
