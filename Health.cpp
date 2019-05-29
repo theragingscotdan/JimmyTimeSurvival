@@ -9,6 +9,7 @@ Health::Health()
 	m_Text.setFont(AssetManager::GetFont("fonts/mainFont.ttf"));
 	m_Text.setString("Health: 100");
 	m_Text.setPosition(500, 0);
+	//m_Text.setFillColor(sf::Color::Blue);
 
 }
 

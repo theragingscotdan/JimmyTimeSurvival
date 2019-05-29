@@ -17,7 +17,6 @@
 #include "ExitLvl3.h"
 #include "Bullet.h"
 #include "Door.h"
-#include "KeyText.h"
 #include "Tutorial.h"
 #include "Tutorial2.h"
 #include "Background.h"
@@ -38,7 +37,7 @@ Level::Level()
 	, m_pendingLevel(0)
 	//, m_background()
 {
-	LoadLevel(3, 0);
+	LoadLevel(1, 0);
 }
 
 
@@ -184,13 +183,7 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			y += Y_SPACE;
 			x = 0;
 		}
-		//else  //(ch == '2')
-		//{
-			// something is drawn there
-			//m_background.SetTexture(AssetManager::GetTexture("graphics/FutureTile.png"));
-			//cellsize(y,x)
-		//}
-
+		// each character will set the players position, adds them to any relevant lists and any additional setters
 		else if (ch == 'P')
 		{
 			player->SetPosition(x, y);
@@ -342,13 +335,7 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 		m_drawListWorld.push_back(tut2);
 
 		}
-		/*else if (ch == '2')
-		{
-			Background* back = new Background();
-			back->SetPosition(x, y);
-			m_updateList.push_back(back);
-			m_drawListWorld.push_back(back);
-		}*/
+	
 		else if (ch == '-')
 		{
 			// do no - empty space
@@ -366,14 +353,8 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 	health->SetPlayer(player);
 	m_updateList.push_back(health);
 	m_drawListUI.push_back(health);
-
-	KeyText* key = new KeyText();
-	key->SetPlayer(player);
-	m_updateList.push_back(key);
-	m_drawListUI.push_back(key);
-
-			
-	}
+		
+}
 
 
 void Level::ReloadLevel()
@@ -395,6 +376,7 @@ int Level::GetLevel()
 
 void Level::AddObject(GameObject* _object)
 {
+	// add the object to all these lists and pair its collision with the player
 	m_drawListWorld.push_back(_object);
 	m_updateList.push_back(_object);
 	m_collisionList.push_back(std::make_pair(_object, m_player));

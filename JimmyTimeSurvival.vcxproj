@@ -150,7 +150,6 @@
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HealthKit.cpp" />
     <ClCompile Include="Key.cpp" />
-    <ClCompile Include="KeyText.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MovingObject.cpp" />
@@ -185,7 +184,6 @@
     <ClInclude Include="Health.h" />
     <ClInclude Include="HealthKit.h" />
     <ClInclude Include="Key.h" />
-    <ClInclude Include="KeyText.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="Obstacle.h" />
