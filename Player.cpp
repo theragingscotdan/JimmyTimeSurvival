@@ -330,7 +330,8 @@ void Player::AttemptAttack()
 	{
 		m_attack = true;
 		m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyAttack.png"));
-		m_attackSound.play();
+		if (m_attackSound.getStatus() != sf::SoundSource::Status::Playing)
+			m_attackSound.play();
 		m_playing = true;
 
 	}

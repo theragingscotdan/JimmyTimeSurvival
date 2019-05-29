@@ -41,7 +41,7 @@ private:
 	sf::Sound m_alarmSound;
 	float m_SpottedTime;
 	AnimationSystem m_animationSystem;
-	
+	bool m_playAnimation;
 	
 };
 

@@ -10,25 +10,32 @@ Alarmer::Alarmer()
 	, m_player(nullptr)
 	, m_alarmSound()
 	, m_SpottedTime(0.0f)
+	, m_playAnimation(false)
 {
 	//m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
 	m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/AlarmerAlert.wav"));
 
-	/*m_animationSystem.SetSprite(m_sprite);
+	m_animationSystem.SetSprite(m_sprite);
 
-	Animation& Alert = m_animationSystem.CreateAnimation("Alert");
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
-	Alert.SetPlayBackSpeed(10);
-	Alert.SetLoop(true); */
+	//if (m_playAnimation)
+	//{
+		Animation& Alert = m_animationSystem.CreateAnimation("Alert");
+		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
+		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
+		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
+		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
+		Alert.SetPlayBackSpeed(10);
+		Alert.SetLoop(true);
+	//}
+	
+
 	
 
 }
 
 void Alarmer::Update(sf::Time _frameTime)
 {
+	m_animationSystem.Update(_frameTime);
 	UpdateState(m_state, _frameTime);//, m_player);
 	MovingObject::Update(_frameTime);
 }
@@ -76,7 +83,7 @@ void Alarmer::SightTime(sf::Time _frameTime)
 	
 }
 
-void Alarmer::AnimationPlay()
+/*void Alarmer::AnimationPlay()
 {
 	m_animationSystem.SetSprite(m_sprite);
 
@@ -88,7 +95,7 @@ void Alarmer::AnimationPlay()
 	Alert.SetPlayBackSpeed(10);
 	Alert.SetLoop(true);
 	m_animationSystem.Play("Alert");
-}
+}*/
 
 void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 {
@@ -215,6 +222,7 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 
 				// 
 			//if 
+			m_playAnimation = false;
 			SeenPlayer(_time);
 
 			break;
@@ -226,16 +234,18 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 			PlayerLocation(m_player->GetPosition(), this->GetPosition());
 			//m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
 
-			//m_animationSystem.Play("Alert");
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
+			m_animationSystem.Play("Alert");
+			//m_sprite.setTexture(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
 			//AnimationPlay();
+			//m_playAnimation = true;
 			
 			// disable the player's ability to attack
 			m_player->SetCanAttack(false);
 			
 			// alert all nearby enemies
 			//SeenPlayer(_time);
-			m_alarmSound.play();
+			if (m_alarmSound.getStatus() != sf::SoundSource::Status::Playing)
+				m_alarmSound.play();
 			//m_playingSound = true;
 			
 					break;

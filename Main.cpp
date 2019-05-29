@@ -82,7 +82,7 @@ int main()
 		// Draw Section
 		// -----------------------------------------------
 		// Clear the window to a single colour
-		gameWindow.clear(sf::Color::Black);
+		gameWindow.clear(sf::Color::White);
 
 		// pass draw to level
 		ourLevel.Draw(gameWindow);

@@ -1,5 +1,6 @@
 // project includes
 #include "Level.h"
+#include "Framework/AssetManager.h"
 #include "Player.h"
 #include "Wall.h"
 #include "Fire.h"
@@ -35,8 +36,9 @@ Level::Level()
 	, m_collisionList()
 	, m_drawListUI()
 	, m_pendingLevel(0)
+	//, m_background()
 {
-	LoadLevel(1, 0);
+	LoadLevel(3, 0);
 }
 
 
@@ -182,6 +184,13 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			y += Y_SPACE;
 			x = 0;
 		}
+		//else  //(ch == '2')
+		//{
+			// something is drawn there
+			//m_background.SetTexture(AssetManager::GetTexture("graphics/FutureTile.png"));
+			//cellsize(y,x)
+		//}
+
 		else if (ch == 'P')
 		{
 			player->SetPosition(x, y);
@@ -338,13 +347,13 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 		m_drawListWorld.push_back(tut2);
 
 		}
-		else if (ch == '2')
+		/*else if (ch == '2')
 		{
 			Background* back = new Background();
 			back->SetPosition(x, y);
 			m_updateList.push_back(back);
 			m_drawListWorld.push_back(back);
-		}
+		}*/
 		else if (ch == '-')
 		{
 			// do no - empty space
