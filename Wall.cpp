@@ -8,5 +8,6 @@ Wall::Wall()
 {
 	//Level* level;
 	//if (m_level->GetLevel())
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/wallPlacehold.png"));
+	//m_sprite.setTexture(AssetManager::GetTexture("graphics/wallPlacehold.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/FutureWall.png"));
 }

@@ -11,10 +11,10 @@ Alarmer::Alarmer()
 	, m_alarmSound()
 	, m_SpottedTime(0.0f)
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
+	//m_sprite.setTexture(AssetManager::GetTexture("graphics/rabbit.png"));
 	m_alarmSound.setBuffer(AssetManager::GetSoundBuffer("audio/AlarmerAlert.wav"));
 
-	m_animationSystem.SetSprite(m_sprite);
+	/*m_animationSystem.SetSprite(m_sprite);
 
 	Animation& Alert = m_animationSystem.CreateAnimation("Alert");
 	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
@@ -22,7 +22,8 @@ Alarmer::Alarmer()
 	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
 	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
 	Alert.SetPlayBackSpeed(10);
-	Alert.SetLoop(true);
+	Alert.SetLoop(true); */
+	
 
 }
 
@@ -73,6 +74,20 @@ void Alarmer::SightTime(sf::Time _frameTime)
 		}
 	//}
 	
+}
+
+void Alarmer::AnimationPlay()
+{
+	m_animationSystem.SetSprite(m_sprite);
+
+	Animation& Alert = m_animationSystem.CreateAnimation("Alert");
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
+	Alert.SetPlayBackSpeed(10);
+	Alert.SetLoop(true);
+	m_animationSystem.Play("Alert");
 }
 
 void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
@@ -210,7 +225,10 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 
 			PlayerLocation(m_player->GetPosition(), this->GetPosition());
 			//m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
-			m_animationSystem.Play("Alert");
+
+			//m_animationSystem.Play("Alert");
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
+			//AnimationPlay();
 			
 			// disable the player's ability to attack
 			m_player->SetCanAttack(false);
