@@ -20,8 +20,7 @@ private:
 	void SightTime(sf::Time _frameTime);
 	void PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos);
 	void SeenPlayer(sf::Time _frametime);
-	void AnimationPlay();
-
+	
 	// enum used to create the finite state machine
 	enum State
 	{

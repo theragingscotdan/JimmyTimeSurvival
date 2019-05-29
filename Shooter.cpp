@@ -41,25 +41,17 @@ void Shooter::Update(sf::Time _frameTime)
 		//m_sprite.setTexture(AssetManager::GetTexture("graphics/snake.png"));
 	} 
 
+	// if m_shoot is true
 	if (m_shoot)
 	{
+		// spawn a new bullet, add it to the object list
 		Bullet* m_bullet = new Bullet();
 		m_level->AddObject(m_bullet);
-		//if (m_bullet != nullptr)
-		//{
-			//m_bullet = new Bullet();
-			m_bullet->SetPosition(this->m_sprite.getPosition() + offset);
-			m_bullet->SetInitialPosition((this)->m_sprite.getPosition());
-			m_bullet->SetActive(true);
-			//m_bullet->SetInitialPosition((this)->m_sprite.getPosition());
-			//m_bullet->SetStartPosition();
-			// add the bullet movement code here. 
-			// look up c# from year 1
-			//m_bullet->SetActive(true);
+		// set the position of the bullet to the shooter + the offset
+		m_bullet->SetPosition(this->m_sprite.getPosition() + offset);
+		// set the bullet to active
+		m_bullet->SetActive(true);
 			
-			//m_velocity
-
-			//m_level->AddObject(m_bullet);
 		//}
 		
 	}

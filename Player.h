@@ -57,7 +57,5 @@ private:
 	void Attack(sf::Event _gameEvent);
 
 	void AttemptAttack();
-
-
-	int Health();
+		
 };

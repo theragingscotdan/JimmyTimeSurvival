@@ -270,14 +270,12 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			Rusher* rush = new Rusher();
 			rush->SetPosition(x, y);
 			rush->SetStartPosition(sf::Vector2f(x, y));
-			//rush->SetEndPositon(sf::Vector2f(x, y));
 			m_updateList.push_back(rush);
 			m_drawListWorld.push_back(rush);
 			m_collisionList.push_back(std::make_pair(rush, player));
 			m_collisionList.push_back(std::make_pair(player, rush));
 			m_collisionList.push_back(std::make_pair(rush, rush));
-			//m_collisionList.push_back(std::make_pair(rush, walls));
-
+			
 		}
 		else if (ch == 'A')
 		{
@@ -306,7 +304,6 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			blocked->SetPosition(x, y);
 			m_updateList.push_back(blocked);
 			m_drawListWorld.push_back(blocked);
-			//m_collisionList.push_back(std::make_pair(blocked, player));
 			m_collisionList.push_back(std::make_pair(player, blocked));
 
 		}
@@ -317,7 +314,6 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			denied->SetPlayer(player);
 			m_updateList.push_back(denied);
 			m_drawListWorld.push_back(denied);
-			//m_collisionList.push_back(std::make_pair(blocked, player));
 			m_collisionList.push_back(std::make_pair(player, denied));
 
 		}
@@ -327,7 +323,6 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			door->SetPosition(x, y);
 			m_updateList.push_back(door);
 			m_drawListWorld.push_back(door);
-			//m_collisionList.push_back(std::make_pair(door, player));
 			m_collisionList.push_back(std::make_pair(player, door));
 
 		}

@@ -14,6 +14,7 @@ Health::Health()
 
 void Health::Update(sf::Time _frameTime)
 {
+	// if player is not nullptr, get their health then draw that value on screen
 	if (m_player != nullptr)
 	{
 		int health = m_player->GetHealth();

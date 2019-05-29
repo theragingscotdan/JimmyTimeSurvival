@@ -84,12 +84,14 @@ void Player::Update(sf::Time _frameTime)
 
 		if (m_timeSinceDamage <= 3.0f)
 		{
+			// if the timer is under 3 seconds, disable the player's ability to attack
 			m_canAttack = false;
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyHurt.png"));
 			
 		}
 		else
 		{
+			// if the timer is over 3 seconds, allow the player to attack again
 			m_canAttack = true;
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
 			m_tookDamage = false;
@@ -244,13 +246,6 @@ void Player::Collide(GameObject& _collider)
 			doorCollider->SetActive(false);
 			m_open.play();
 		}
-
-
-
-		/*if (m_lives <= 0)
-		{
-
-		} */
 	}
 }
 void Player::AddHealth(int _changeBy)
@@ -262,8 +257,10 @@ void Player::LoseHealth(int _changeBy)
 {
 	m_health -= _changeBy;
 
+	// if the player has 0 or less hp
 	if (m_health <= 0)
 	{
+		// kill the player
 		Kill();
 
 	}
@@ -320,12 +317,7 @@ void Player::Attack(sf::Event _gameEvent)
 
 void Player::AttemptAttack()
 {
-	/*if (m_justAttacked)
-	{
-		m_canAttack = false;
-	}
-	*/
-	//if (m_tookDamage && (sf::Keyboard::IsHeld(sf::Keyboard::Space))
+	
 	if (m_canAttack)
 	{
 		m_attack = true;
@@ -338,7 +330,7 @@ void Player::AttemptAttack()
 	else
 	{
 		m_attack = false;
-		//m_sprite.setTexture(AssetManager::GetTexture("graphics/JimmySprites/JimmyStand2.png"));
+		
 	}
 
 }

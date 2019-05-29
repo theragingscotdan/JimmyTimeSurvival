@@ -19,8 +19,3 @@ void Key::OnPickup(Player& _player)
 
 
 }
-
-/*int Key::GetKeys()
-{
-	return m_keys;
-} */

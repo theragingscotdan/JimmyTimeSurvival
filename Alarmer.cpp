@@ -17,16 +17,15 @@ Alarmer::Alarmer()
 
 	m_animationSystem.SetSprite(m_sprite);
 
-	//if (m_playAnimation)
-	//{
-		Animation& Alert = m_animationSystem.CreateAnimation("Alert");
-		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
-		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
-		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
-		Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
-		Alert.SetPlayBackSpeed(10);
-		Alert.SetLoop(true);
-	//}
+	// create the animation. each add frame adds to the animation
+	Animation& Alert = m_animationSystem.CreateAnimation("Alert");
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
+	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
+	Alert.SetPlayBackSpeed(10);
+	Alert.SetLoop(true);
+	
 	
 
 	
@@ -36,7 +35,7 @@ Alarmer::Alarmer()
 void Alarmer::Update(sf::Time _frameTime)
 {
 	m_animationSystem.Update(_frameTime);
-	UpdateState(m_state, _frameTime);//, m_player);
+	UpdateState(m_state, _frameTime);
 	MovingObject::Update(_frameTime);
 }
 
@@ -44,73 +43,48 @@ void Alarmer::Update(sf::Time _frameTime)
 
 void Alarmer::SightTime(sf::Time _frameTime)
 {
-	
-	//if (!m_playerSeen)
-	//{
-		m_timeTillTransition += _frameTime.asSeconds();
-		if (!m_hasVision)
+		
+	m_timeTillTransition += _frameTime.asSeconds();
+	if (!m_hasVision)
+	{
+		// this switches between blind and vision. If the time since last transition is
+		// less than or equal to 8 seconds, state is blind
+
+		if (m_timeTillTransition <= 8.0f)
 		{
-			//m_timeTillTransition += _frameTime.asSeconds();
-
-			if (m_timeTillTransition <= 8.0f)
-			{
-				m_state = STATE_BLIND;
-			}
-			else
-			{
-				// set has vision to true, change state to vision and timeTillTransition to 0
-				m_hasVision = true;
-				m_state = STATE_VISION;
-				m_timeTillTransition = 0;
-
-
-			}
+			m_state = STATE_BLIND;
 		}
 		else
 		{
-			if (m_timeTillTransition <= 5.0f)
-			{
-				m_state = STATE_VISION;
-			}
-			else
-			{
-				m_hasVision = false;
-				m_state = STATE_BLIND;
-				m_timeTillTransition = 0;
-			}
+			// set has vision to true, change state to vision and timeTillTransition to 0
+			m_hasVision = true;
+			m_state = STATE_VISION;
+			m_timeTillTransition = 0;
+
+
 		}
-	//}
+	}
+	else
+	{
+		if (m_timeTillTransition <= 5.0f)
+		{
+			m_state = STATE_VISION;
+		}
+		else
+		{
+			m_hasVision = false;
+			m_state = STATE_BLIND;
+			m_timeTillTransition = 0;
+		}
+	}
+	
 	
 }
-
-/*void Alarmer::AnimationPlay()
-{
-	m_animationSystem.SetSprite(m_sprite);
-
-	Animation& Alert = m_animationSystem.CreateAnimation("Alert");
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP2.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP3.png"));
-	Alert.AddFrame(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP4.png"));
-	Alert.SetPlayBackSpeed(10);
-	Alert.SetLoop(true);
-	m_animationSystem.Play("Alert");
-}*/
 
 void Alarmer::PlayerLocation(sf::Vector2f playerPos, sf::Vector2f enemyPos)
 {
 	// https://www.gamedev.net/forums/topic/671131-sfml-distance-between-player-and-enemy/
-	//float distx = m_player->GetPosition().x - this->GetPosition().y; // distx can be negative.
-	//float disty = m_player->GetPosition().y - this->GetPosition().y; // disty can be negative.
-	/*float distx = playerPos.x - enemyPos.y; // distx can be negative.
-	float disty = playerPos.y - enemyPos.y; // disty can be negative.
-
-	float distx2 = distx * distx; // distx2 is ALWAYS non-negative (+2 * +2 gives +4, 0 * 0 gives 0, -3 * -3 gives +9)
-	float disty2 = disty * disty; // disty2 is ALWAYS non-negative
-
-	float dxy2 = distx2 + disty2; // dxy2 is ALWAYS non-negative
-	float dxy = sqrt(dxy2); */
-
+	
 	// work out the magnitude between the player and the alarmer
 	float distance = (abs(sqrt(((playerPos.x - enemyPos.x) * (playerPos.x - enemyPos.x)) + ((playerPos.y - enemyPos.y) * (playerPos.y - enemyPos.y)))));
 
@@ -234,10 +208,9 @@ void Alarmer::UpdateState(State m_state, sf::Time _time)//, Player* _player)
 			PlayerLocation(m_player->GetPosition(), this->GetPosition());
 			//m_sprite.setTexture(AssetManager::GetTexture("graphics/spikesPlacehold.png"));
 
+			// play the alert animation
 			m_animationSystem.Play("Alert");
-			//m_sprite.setTexture(AssetManager::GetTexture("graphics/Alarmer/AlarmerAlertP1.png"));
-			//AnimationPlay();
-			//m_playAnimation = true;
+		
 			
 			// disable the player's ability to attack
 			m_player->SetCanAttack(false);

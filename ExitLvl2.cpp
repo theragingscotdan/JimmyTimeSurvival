@@ -12,7 +12,9 @@ void ExitLvl2::Update(sf::Time _frameTime)
 {
 	if (m_player != nullptr)
 	{
+		// if the player has the toolkit
 		bool haveTool = m_player->GetToolkit();
+		
 		if (haveTool == true)
 		{
 			m_active = false;
