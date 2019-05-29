@@ -2,6 +2,7 @@
 
 #include "Enemy.h"
 #include <SFML/Audio.hpp>
+#include "Framework/AnimationSystem.h"
 
 class Alarmer : public Enemy
 {
@@ -38,6 +39,7 @@ private:
 	Player* m_player;
 	sf::Sound m_alarmSound;
 	float m_SpottedTime;
+	AnimationSystem m_animationSystem;
 	
 	
 };

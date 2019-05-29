@@ -19,6 +19,7 @@
 #include "KeyText.h"
 #include "Tutorial.h"
 #include "Tutorial2.h"
+#include "Background.h"
 
 // library includes
 #include <iostream>
@@ -35,7 +36,7 @@ Level::Level()
 	, m_drawListUI()
 	, m_pendingLevel(0)
 {
-	LoadLevel(1, 0);
+	LoadLevel(3, 0);
 }
 
 
@@ -329,13 +330,20 @@ void Level::LoadLevel(int _levelToLoad, int _totalMilliseconds)
 			m_drawListWorld.push_back(tut);
 		
 		}
-		else if (ch == '2')
+		else if (ch == '!')
 		{
 		Tutorial2* tut2 = new Tutorial2();
 		tut2->SetPosition(x, y);
 		m_updateList.push_back(tut2);
 		m_drawListWorld.push_back(tut2);
 
+		}
+		else if (ch == '2')
+		{
+			Background* back = new Background();
+			back->SetPosition(x, y);
+			m_updateList.push_back(back);
+			m_drawListWorld.push_back(back);
 		}
 		else if (ch == '-')
 		{
