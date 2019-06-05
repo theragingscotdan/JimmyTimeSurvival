@@ -14,6 +14,5 @@ public:
 
 private:
 
-	Player* m_player;
-
+	
 };

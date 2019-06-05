@@ -22,7 +22,9 @@ public:
 
 
 
-private:
+protected:
 	Player* m_player;
+
+private:
 	Level* m_level;
 };
