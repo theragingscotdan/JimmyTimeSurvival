@@ -135,6 +135,7 @@ void Alarmer::SeenPlayer(sf::Time _frametime)
 	{
 		//m_state = STATE_VISION;
 		m_SpottedTime = 0.0f;
+		m_playerSeen = false;
 		
 	}
 	
